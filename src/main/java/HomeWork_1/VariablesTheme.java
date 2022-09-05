@@ -1,5 +1,7 @@
 package HomeWork_1;
 
+import java.util.Calendar;
+
 public class VariablesTheme {
     public static void main(String[] args) {
         System.out.println("№1 Создание переменных и вывод их значений на консоль");
@@ -114,7 +116,11 @@ public class VariablesTheme {
                 "\nПроизведение цифр числа " + num + " = " + multiply + "\n");
 
         System.out.println("№10 Преобразование секунд");
-
-
+        int seconds = 86399;
+        int hour = (seconds / 60) / 60;
+        int min = (seconds / 60) % 60;
+        int newSeconds = seconds % 60;
+        System.out.println("Конвертируемое число = " + seconds);
+        System.out.println(hour + ":" + min + ":" + newSeconds);
     }
 }
