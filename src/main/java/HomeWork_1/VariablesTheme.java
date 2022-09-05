@@ -101,9 +101,19 @@ public class VariablesTheme {
                 ws + ws + ws+ ws + bsn + ws + sn +"\n" +
                 ws + ws + ws + bsn + und + scob + unscob + sn + "\n" +
                 ws + ws + bsn + ws + ws +ws + ws + ws + sn + "\n" +
-                ws + bsn  + und + und + und +  bsn + sn + und + und + sn);
+                ws + bsn  + und + und + und +  bsn + sn + und + und + sn + "\n");
 
         System.out.println("№9 Произведение и сумма цифр числа");
+        int num = 345;
+        int hundredNum = num / 100;
+        int tenNum = num % 100 / 10;
+        int oneNum = num % 10;
+        int summa = oneNum + tenNum + hundredNum;
+        int multiply = oneNum * tenNum * hundredNum;
+        System.out.println("Сумма цифр числа " + num + " = " + summa +
+                "\nПроизведение цифр числа " + num + " = " + multiply + "\n");
+
+        System.out.println("№10 Преобразование секунд");
 
 
     }
