@@ -1,35 +1,34 @@
 package HomeWork_1;
 
-import java.util.Calendar;
-
 public class VariablesTheme {
     public static void main(String[] args) {
         System.out.println("№1 Создание переменных и вывод их значений на консоль");
         int cores = 2;
-        byte oc = 64;
+        byte operatingSystem = 64;
         short ram = 8;
         long codeProduct = 2_104_071_916;
         float sdd = 237.1E01f;
         double freeSdd = 94.57;
-        char processor = 'Г';
+        char gigabyteCharG = 'Г';
         boolean compOrNotpad = true;
         System.out.println("Ядер: " + cores);
-        System.out.println("Тип системы: " + oc);
+        System.out.println("Тип системы: " + operatingSystem);
         System.out.println("Оперативная память: " + ram);
         System.out.println("Код продукта: " + codeProduct);
-        System.out.println("SDD: " + sdd + processor + "б");
-        System.out.println("Свободная память: " + freeSdd + processor + "б");
+        System.out.println("SDD: " + sdd + gigabyteCharG + "б");
+        System.out.println("Свободная память: " + freeSdd + gigabyteCharG + "б");
         System.out.println("Ноутбук?: " + compOrNotpad + "\n");
 
 
         System.out.println("№2 Расчет стоимости товара со скидкой");
-        int pen = 100;
-        int book = 200;
-        double discount = (pen + book) * 0.11;
-        double sum = (pen + book)- discount;
+        int pricePen = 100;
+        int priceBook = 200;
+        double discount = (pricePen + priceBook) * 0.11;
+        double discountPrice = (pricePen + priceBook)- discount;
         System.out.println("Скидка = " + discount + " рубля\n" +
-                "Стоимость товара со скидкой = " + sum + " рубля\n");
+                "Стоимость товара со скидкой = " + discountPrice + " рубля\n");
 
+        System.out.println("№3 Вывод на консоль слова JAVA");
         System.out.println("   J    a  v     v  a  \n" +
                 "   J   a a  v   v  a a            \n" +
                 "J  J  aaaaa  V V  aaaaa           \n" +
@@ -37,23 +36,31 @@ public class VariablesTheme {
 
         System.out.println("№4 Отображение min и max значений числовых типов данных");
         int maxInt = Integer.MAX_VALUE;
+        System.out.println("первоначальное значение int = " + maxInt);
+        maxInt++;
+        System.out.println("значение после инкремента int = " + maxInt);
+        maxInt--;
+        System.out.println("значение после декремента int = " + maxInt);
         byte maxByte = Byte.MAX_VALUE;
+        System.out.println("первоначальное значение byte = " + maxByte);
+        maxByte++;
+        System.out.println("значение после инкремента byte = " + maxInt);
+        maxByte--;
+        System.out.println("значение после декремента byte = " + maxByte);
         long maxLong = Long.MAX_VALUE;
+        System.out.println("первоначальное значение long = " + maxLong);
+        maxLong++;
+        System.out.println( "значение после инкремента long = " + maxLong);
+        maxLong--;
+        System.out.println("значение после декремента long = " + maxLong);
         short maxShort = Short.MAX_VALUE;
-        System.out.println("первоначальное значение int = " + maxInt + "\n" +
-                "значение после инкремента int = " + maxInt++ + "\n" +
-                "значение после декремента int = " + maxInt-- + "\n" +
-                "первоначальное значение byte = " + maxByte + "\n" +
-                "значение после инкремента byte = " + maxByte++ + "\n" +
-                "значение после декремента byte = " + maxByte-- + "\n" +
-                "первоначальное значение long = " + maxLong + "\n" +
-                "значение после инкремента long = " + maxLong++ + "\n" +
-                "значение после декремента long = " + maxLong-- + "\n" +
-                "первоначальное значение short = " + maxShort + "\n" +
-                "значение после инкремента short = " + maxShort++ + "\n" +
-                "значение после декремента short = " + maxShort-- + "\n");
+        System.out.println("первоначальное значение short = " + maxShort);
+        maxShort++;
+        System.out.println("значение после инкремента short = " + maxShort);
+        maxShort--;
+        System.out.println( "значение после декремента short = " + maxShort);
 
-        System.out.println("№5 Перестановка значений переменных");
+        System.out.println("\n№5 Перестановка значений переменных");
         int number1 = 2;
         int number2 = 5;
         int temp = 0;
@@ -63,14 +70,16 @@ public class VariablesTheme {
         number2 = temp;
         System.out.println("новые значения переменных 1число = " + number1 + " а второе = " + number2);
         System.out.println("При помощи арифметики 1число = " + number1 + " а второе = " + number2);
-        int arifNumber1 = (number1 + number2) - number1;
-        int arifNumber2 = (number1 + number2) - number2;
-        System.out.print("новые значения 1число = " + arifNumber1 + " а второе = " + arifNumber2 + "\n");
-        System.out.println("Побитовый способ 1число = " + arifNumber1 + " а второе = " + arifNumber2);
-        int bit= arifNumber1 | arifNumber2;
-        int bitNum1 = bit ^ arifNumber1;
-        int bitNum2 = bit ^ arifNumber2;
-        System.out.println("новые значения 1число = " + bitNum1 + " а второе = " + bitNum2 + "\n");
+        number2 = number1 + number2;
+        number1 = number1 - number2;
+        number1 = -number1;
+        number2 = number2 - number1;
+        System.out.print("новые значения 1число = " + number1 + " а второе = " + number2 + "\n");
+        System.out.println("Побитовый способ 1число = " + number1 + " а второе = " + number2);
+        number2 = number1 | number2;
+        number1 = number2 ^ number1;
+        number2 = number1 ^ number2;
+        System.out.println("новые значения 1число = " + number1 + " а второе = " + number2 + "\n");
 
         System.out.println("№6 Вывод символов и их кодов");
         char simbol1 = 35;
@@ -78,11 +87,11 @@ public class VariablesTheme {
         char simbol3 = 64;
         char simbol4 = 94;
         char simbol5 = 95;
-        System.out.println("код зимвола 35 = " + simbol1 +
-                "\nкод зимвола 38 = " + simbol2 +
-                "\nкод зимвола 64 = " + simbol3 +
-                "\nкод зимвола 94 = " + simbol4 +
-                "\nкод зимвола 95 = " + simbol5 + "\n");
+        System.out.println("код cимвола 35 = " + simbol1 +
+                "\nкод cимвола 38 = " + simbol2 +
+                "\nкод cимвола 64 = " + simbol3 +
+                "\nкод cимвола 94 = " + simbol4 +
+                "\nкод cимвола 95 = " + simbol5 + "\n");
 
         System.out.println("№7 Отображение количества сотен, десятков и единиц числа");
         int number = 123;
