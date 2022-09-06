@@ -1,6 +1,13 @@
 package HomeWork_1;
 
 public class VariablesTheme {
+    public static final String space = " ";
+    public static final String slash = "/";
+    public static final String underscore = "_";
+    private static String openPerentheses;
+    private static String closePerentheses;
+    private static char backSlash;
+
     public static void main(String[] args) {
         System.out.println("№1 Создание переменных и вывод их значений на консоль");
         int cores = 2;
@@ -82,54 +89,54 @@ public class VariablesTheme {
         System.out.println("новые значения 1число = " + number1 + " а второе = " + number2 + "\n");
 
         System.out.println("№6 Вывод символов и их кодов");
-        char simbol1 = 35;
-        char simbol2 = 38;
-        char simbol3 = 64;
-        char simbol4 = 94;
-        char simbol5 = 95;
-        System.out.println("код cимвола 35 = " + simbol1 +
-                "\nкод cимвола 38 = " + simbol2 +
-                "\nкод cимвола 64 = " + simbol3 +
-                "\nкод cимвола 94 = " + simbol4 +
-                "\nкод cимвола 95 = " + simbol5 + "\n");
+        char simbol1 = '#';
+        char simbol2 = '&';
+        char simbol3 = '@';
+        char simbol4 = '^';
+        char simbol5 = '_';
+        System.out.println("код cимвола "+ "\"" + (char)simbol1 + "\" = " + (int)simbol1 + "\n" +
+                "код cимвола "+ "\"" + (char)simbol2 + "\" = " + (int)simbol2 + "\n" +
+                "код cимвола "+ "\"" + (char)simbol3 + "\" = " + (int)simbol3 + "\n" +
+                "код cимвола "+ "\"" + (char)simbol4 + "\" = " + (int)simbol4 + "\n" +
+                "код cимвола "+ "\"" + (char)simbol5 + "\" = " + (int)simbol5 + "\n");
 
         System.out.println("№7 Отображение количества сотен, десятков и единиц числа");
         int number = 123;
-        int hundred = number / 100;
-        int ten = number % 100 / 10;
-        int oneNumber = number % 10;
+        int hundreds = number / 100;
+        int dozens = number % 100 / 10;
+        int ones = number % 10;
         System.out.println("Число " + number + " содержит:\n" +
-                hundred + " сотню\n" + ten + " десятка\n" + oneNumber + " единицы\n");
+                hundreds + " сотню\n" + dozens + " десятка\n" + ones + " единицы\n");
 
         System.out.println("№8 Вывод на консоль ASCII-арт Дюка");
-        var ws = " ";
-        var bsn = "/";
-        char sn = 92;
-        var und = "_";
-        var scob = "(";
-        var unscob = ")";
-        System.out.println(ws + ws + ws + ws + ws + bsn + sn + "\n"+
-                ws + ws + ws+ ws + bsn + ws + sn +"\n" +
-                ws + ws + ws + bsn + und + scob + unscob + sn + "\n" +
-                ws + ws + bsn + ws + ws +ws + ws + ws + sn + "\n" +
-                ws + bsn  + und + und + und +  bsn + sn + und + und + sn + "\n");
+        var space = ' ';
+        var slash = '/';
+        var backSlash = '\\';
+        var underscore = '_';
+        var openPerentheses = "(";
+        var closePerentheses = ")";
+        System.out.println(space + space + space + space + space + slash + backSlash + "\n"+
+                space + space + space + space + slash + space + backSlash +"\n" +
+                space + space + space + slash + underscore + openPerentheses + closePerentheses + backSlash + "\n" +
+                space + space + slash + space + space + space + space + space + backSlash + "\n" +
+                space + slash  + underscore + underscore + underscore +  slash + backSlash + underscore + underscore + backSlash + "\n");
 
         System.out.println("№9 Произведение и сумма цифр числа");
         int num = 345;
-        int hundredNum = num / 100;
-        int tenNum = num % 100 / 10;
-        int oneNum = num % 10;
-        int summa = oneNum + tenNum + hundredNum;
-        int multiply = oneNum * tenNum * hundredNum;
-        System.out.println("Сумма цифр числа " + num + " = " + summa +
-                "\nПроизведение цифр числа " + num + " = " + multiply + "\n");
+        int hundreds1 = num / 100;
+        int dozens1 = num % 100 / 10;
+        int ones1 = num % 10;
+        int suma = ones1 + dozens1 + hundreds1;
+        int product = ones1 * dozens1 * hundreds1;
+        System.out.println("Сумма цифр числа " + num + " = " + suma +
+                "\nПроизведение цифр числа " + num + " = " + product + "\n");
 
         System.out.println("№10 Преобразование секунд");
-        int seconds = 86399;
-        int hour = (seconds / 60) / 60;
-        int min = (seconds / 60) % 60;
-        int newSeconds = seconds % 60;
-        System.out.println("Конвертируемое число = " + seconds);
-        System.out.println(hour + ":" + min + ":" + newSeconds);
+        int totalSec = 86399;
+        int hour = (totalSec / 60) / 60;
+        int min = (totalSec / 60) % 60;
+        int sec = totalSec % 60;
+        System.out.println("Конвертируемое число = " + totalSec);
+        System.out.println(hour + ":" + min + ":" + sec);
     }
 }
