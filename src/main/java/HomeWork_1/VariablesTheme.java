@@ -51,7 +51,7 @@ public class VariablesTheme {
         byte maxByte = Byte.MAX_VALUE;
         System.out.println("первоначальное значение byte = " + maxByte);
         maxByte++;
-        System.out.println("значение после инкремента byte = " + maxInt);
+        System.out.println("значение после инкремента byte = " + maxByte);
         maxByte--;
         System.out.println("значение после декремента byte = " + maxByte);
         long maxLong = Long.MAX_VALUE;
@@ -78,12 +78,11 @@ public class VariablesTheme {
         System.out.println("новые значения переменных 1число = " + number1 + " а второе = " + number2);
         System.out.println("При помощи арифметики 1число = " + number1 + " а второе = " + number2);
         number2 = number1 + number2;
-        number1 = number1 - number2;
-        number1 = -number1;
+        number1 = (number1 - number2)/-1;
         number2 = number2 - number1;
         System.out.print("новые значения 1число = " + number1 + " а второе = " + number2 + "\n");
         System.out.println("Побитовый способ 1число = " + number1 + " а второе = " + number2);
-        number2 = number1 | number2;
+        number2 = number1 ^ number2;
         number1 = number2 ^ number1;
         number2 = number1 ^ number2;
         System.out.println("новые значения 1число = " + number1 + " а второе = " + number2 + "\n");
@@ -94,11 +93,11 @@ public class VariablesTheme {
         char simbol3 = '@';
         char simbol4 = '^';
         char simbol5 = '_';
-        System.out.println("код cимвола "+ "\"" + (char)simbol1 + "\" = " + (int)simbol1 + "\n" +
-                "код cимвола "+ "\"" + (char)simbol2 + "\" = " + (int)simbol2 + "\n" +
-                "код cимвола "+ "\"" + (char)simbol3 + "\" = " + (int)simbol3 + "\n" +
-                "код cимвола "+ "\"" + (char)simbol4 + "\" = " + (int)simbol4 + "\n" +
-                "код cимвола "+ "\"" + (char)simbol5 + "\" = " + (int)simbol5 + "\n");
+        System.out.println("код cимвола "+ "\"" + simbol1 + "\" = " + (int) simbol1 + "\n" +
+                "код cимвола "+ "\"" + simbol2 + "\" = " + (int) simbol2 + "\n" +
+                "код cимвола "+ "\"" + simbol3 + "\" = " + (int) simbol3 + "\n" +
+                "код cимвола "+ "\"" + simbol4 + "\" = " + (int) simbol4 + "\n" +
+                "код cимвола "+ "\"" + simbol5 + "\" = " + (int) simbol5 + "\n");
 
         System.out.println("№7 Отображение количества сотен, десятков и единиц числа");
         int number = 123;
@@ -109,17 +108,17 @@ public class VariablesTheme {
                 hundreds + " сотню\n" + dozens + " десятка\n" + ones + " единицы\n");
 
         System.out.println("№8 Вывод на консоль ASCII-арт Дюка");
-        var space = ' ';
-        var slash = '/';
-        var backSlash = '\\';
-        var underscore = '_';
-        var openPerentheses = "(";
-        var closePerentheses = ")";
-        System.out.println(space + space + space + space + space + slash + backSlash + "\n"+
-                space + space + space + space + slash + space + backSlash +"\n" +
+        char space = ' ';
+        char slash = '/';
+        char backSlash = '\\';
+        char underscore = '_';
+        char openPerentheses = '(';
+        char closePerentheses = ')';
+        System.out.println(space + space + space + space + space + slash + backSlash + "\n" +
+                space + space + space + space + slash + space + backSlash + "\n" +
                 space + space + space + slash + underscore + openPerentheses + closePerentheses + backSlash + "\n" +
                 space + space + slash + space + space + space + space + space + backSlash + "\n" +
-                space + slash  + underscore + underscore + underscore +  slash + backSlash + underscore + underscore + backSlash + "\n");
+                space + slash + underscore + underscore + underscore + slash + backSlash + underscore + underscore + backSlash + "\n");
 
         System.out.println("№9 Произведение и сумма цифр числа");
         int num = 345;
