@@ -1,17 +1,10 @@
 package HomeWork_1;
 
 public class VariablesTheme {
-    public static final String space = " ";
-    public static final String slash = "/";
-    public static final String underscore = "_";
-    private static String openPerentheses;
-    private static String closePerentheses;
-    private static char backSlash;
-
     public static void main(String[] args) {
         System.out.println("№1 Создание переменных и вывод их значений на консоль");
         int cores = 2;
-        byte operatingSystem = 64;
+        byte os = 64;
         short ram = 8;
         long codeProduct = 2_104_071_916;
         float sdd = 237.1E01f;
@@ -19,13 +12,12 @@ public class VariablesTheme {
         char gigabyteCharG = 'Г';
         boolean compOrNotpad = true;
         System.out.println("Ядер: " + cores);
-        System.out.println("Тип системы: " + operatingSystem);
+        System.out.println("Тип системы: " + os);
         System.out.println("Оперативная память: " + ram);
         System.out.println("Код продукта: " + codeProduct);
         System.out.println("SDD: " + sdd + gigabyteCharG + "б");
         System.out.println("Свободная память: " + freeSdd + gigabyteCharG + "б");
         System.out.println("Ноутбук?: " + compOrNotpad + "\n");
-
 
         System.out.println("№2 Расчет стоимости товара со скидкой");
         int pricePen = 100;
@@ -77,14 +69,14 @@ public class VariablesTheme {
         number2 = temp;
         System.out.println("новые значения переменных 1число = " + number1 + " а второе = " + number2);
         System.out.println("При помощи арифметики 1число = " + number1 + " а второе = " + number2);
-        number2 = number1 + number2;
-        number1 = (number1 - number2)/-1;
-        number2 = number2 - number1;
+        number1 = number1 + number2;
+        number2 = number1 - number2;
+        number1 = number1 - number2;
         System.out.print("новые значения 1число = " + number1 + " а второе = " + number2 + "\n");
         System.out.println("Побитовый способ 1число = " + number1 + " а второе = " + number2);
-        number2 = number1 ^ number2;
-        number1 = number2 ^ number1;
-        number2 = number1 ^ number2;
+        number1 = number1 ^ number2;
+        number2 = number2 ^ number1;
+        number1 = number1 ^ number2;
         System.out.println("новые значения 1число = " + number1 + " а второе = " + number2 + "\n");
 
         System.out.println("№6 Вывод символов и их кодов");
@@ -114,7 +106,7 @@ public class VariablesTheme {
         char underscore = '_';
         char openPerentheses = '(';
         char closePerentheses = ')';
-        System.out.println(space + space + space + space + space + slash + backSlash + "\n" +
+        System.out.println("" + space + space + space + space + space + slash + backSlash + "\n" +
                 space + space + space + space + slash + space + backSlash + "\n" +
                 space + space + space + slash + underscore + openPerentheses + closePerentheses + backSlash + "\n" +
                 space + space + slash + space + space + space + space + space + backSlash + "\n" +
@@ -125,10 +117,10 @@ public class VariablesTheme {
         int hundreds1 = num / 100;
         int dozens1 = num % 100 / 10;
         int ones1 = num % 10;
-        int suma = ones1 + dozens1 + hundreds1;
-        int product = ones1 * dozens1 * hundreds1;
-        System.out.println("Сумма цифр числа " + num + " = " + suma +
-                "\nПроизведение цифр числа " + num + " = " + product + "\n");
+        int sumDigits = ones1 + dozens1 + hundreds1;
+        int prodDigits = ones1 * dozens1 * hundreds1;
+        System.out.println("Сумма цифр числа " + num + " = " + sumDigits + "\n" +
+                "Произведение цифр числа " + num + " = " + prodDigits + "\n");
 
         System.out.println("№10 Преобразование секунд");
         int totalSec = 86399;
