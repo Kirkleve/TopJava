@@ -69,14 +69,14 @@ public class VariablesTheme {
         number2 = temp;
         System.out.println("новые значения переменных 1число = " + number1 + " а второе = " + number2);
         System.out.println("При помощи арифметики 1число = " + number1 + " а второе = " + number2);
-        number1 = number1 + number2;
+        number1 += number2;
         number2 = number1 - number2;
-        number1 = number1 - number2;
+        number1 -= number2;
         System.out.print("новые значения 1число = " + number1 + " а второе = " + number2 + "\n");
         System.out.println("Побитовый способ 1число = " + number1 + " а второе = " + number2);
-        number1 = number1 ^ number2;
-        number2 = number2 ^ number1;
-        number1 = number1 ^ number2;
+        number1 ^= number2;
+        number2 ^= number1;
+        number1 ^= number2;
         System.out.println("новые значения 1число = " + number1 + " а второе = " + number2 + "\n");
 
         System.out.println("№6 Вывод символов и их кодов");
@@ -107,10 +107,10 @@ public class VariablesTheme {
         char openPerentheses = '(';
         char closePerentheses = ')';
         System.out.println("" + space + space + space + space + space + slash + backSlash + "\n" +
-                space + space + space + space + slash + space + backSlash + "\n" +
-                space + space + space + slash + underscore + openPerentheses + closePerentheses + backSlash + "\n" +
-                space + space + slash + space + space + space + space + space + backSlash + "\n" +
-                space + slash + underscore + underscore + underscore + slash + backSlash + underscore + underscore + backSlash + "\n");
+                space + space + space + space + slash + space + space + backSlash + "\n" +
+                space + space + space + slash + underscore + openPerentheses + space + closePerentheses + backSlash + "\n" +
+                space + space + slash + space + space + space + space + space + space + backSlash + "\n" +
+                space + slash + underscore + underscore + underscore + underscore + slash + backSlash + underscore + underscore + backSlash + "\n");
 
         System.out.println("№9 Произведение и сумма цифр числа");
         int num = 345;
