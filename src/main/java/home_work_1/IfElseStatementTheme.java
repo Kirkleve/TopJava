@@ -1,4 +1,4 @@
-package HomeWork_1;
+package home_work_1;
 
 public class IfElseStatementTheme {
     public static void main(String[] args) {
@@ -87,43 +87,44 @@ public class IfElseStatementTheme {
             System.out.println("Это маленькая буква");
         } else if (simbol > 48 && simbol < 58) {
             System.out.println("Это число");
+        } else {
+            System.out.println("Это не буква и не число");
         }
 
         System.out.println("\n№6 Определение суммы вклада и начисленных банком %");
+        /*
+        проверки нужны только для определения %.
+        Вычисления и вывод что-то на консоль нужно делать один
+        раз в самом конце, после определения процента
+         */
         int depositAmount = 300_000;
-        double percent;
+        double percent = 0;
         double accruedInterest;
-        if (depositAmount < 100_000) {
+        if (depositAmount > 0) {
+            if (depositAmount < 100_000) {
+                percent = 0.05;
+            } else if (depositAmount > 100_000 && depositAmount <= 300_000) {
+                percent = 0.07;
+            } else if (depositAmount >300_000) {
+                percent = 0.1;
+            }
             System.out.println("Сумма вклада " + depositAmount);
-            percent = 0.05;
             accruedInterest = (depositAmount * percent);
             System.out.println((int)(percent * 100) + "% годовых, прибыли " + (int)accruedInterest +
-                    "Общая сумма " + (int)(depositAmount + accruedInterest));
-        } else if (depositAmount > 100_000 && depositAmount <= 300_000) {
-            System.out.println("Сумма вклада " + depositAmount);
-            percent = 0.07;
-            accruedInterest = (depositAmount * percent);
-            System.out.println((int)(percent * 100) + "% годовых, прибыли " + (int)accruedInterest +
-                    "Общая сумма " + (int)(depositAmount + accruedInterest));
-        } else if (depositAmount >300_000) {
-            System.out.println("Сумма вклада " + depositAmount);
-            percent = 0.1;
-            accruedInterest = (depositAmount * percent);
-            System.out.println((int)(percent * 100) + "% годовых, прибыли " + (int)accruedInterest +
-                    "Общая сумма " + (int)(depositAmount + accruedInterest));
+                    ", общая сумма " + (int)(depositAmount + accruedInterest));
         } else {
-            System.out.println("Что вы меня дурите, вы указали неверную сумму вклада");
+            System.out.println("Вы ввели неверные данные!");
         }
 
         System.out.println("\n№7 Определение оценки по предметам");
         int lessonHistory = 59;
-        int gradesHistory = Grades(lessonHistory);
+        int gradesHistory = convertingPointsGrades(lessonHistory);
         int lessonIT = 91;
-        int gradesIT = Grades(lessonIT);
+        int gradesIT = convertingPointsGrades(lessonIT);
         int averageScore = (gradesHistory + gradesIT) / 2;
         int averagePercentage = (lessonHistory + lessonIT) / 2;
         System.out.println("По истории оценка " + gradesHistory + "\n" +
-                "По програмированию " + gradesIT + "\n" +
+                "По программированию " + gradesIT + "\n" +
                 "Средний балл оценок по предметам " + averageScore + "\n" +
                 "Средний % по предметам " + averagePercentage + "%" + "\n");
 
@@ -140,55 +141,41 @@ public class IfElseStatementTheme {
 
         System.out.println("\n№9 Подсчет количества банкнот");
         int usd = 567;
-        int countBanknote1Usd = 0;
-        int countBanknote10Usd = 0;
-        int countBanknote100Usd = 0;
-        int banknote1usd = 200;
-        int banknote10usd = 5;
-        int banknote100usd = 200;
+        int issuance100Usd = usd / 100;
+        int issuance10Usd = usd % 100 / 10;
+        int issuance1Usd = usd % 10;
+        int numberOfBanknotes1usd = 200;
+        int numberOfBanknotes10usd = 5;
+        int numberOfBanknotes100usd = 20;
+        int sumBanknotesInTerminal = numberOfBanknotes1usd + (numberOfBanknotes10usd * 10) +
+                (numberOfBanknotes100usd * 100);
         int count = 0;
-        int sumaCountBanknote = 0;
-        if (usd > 100) {
-            countBanknote100Usd = usd / 100;
-            countBanknote10Usd = usd % 100 / 10;
-            countBanknote1Usd = usd % 10;
-            if (countBanknote100Usd > banknote100usd) {
-                count = countBanknote100Usd - banknote100usd;
-                countBanknote100Usd = banknote100usd;
-                countBanknote10Usd += count * 10;
+        if (usd > 0 && sumBanknotesInTerminal > usd ) {
+            if (issuance100Usd > numberOfBanknotes100usd) {
+                count = issuance100Usd - numberOfBanknotes100usd;
+                issuance100Usd = numberOfBanknotes100usd;
+                issuance10Usd += count * 10;
             }
-            if (countBanknote10Usd > banknote10usd) {
-                count = countBanknote10Usd - banknote10usd;
-                countBanknote10Usd = banknote10usd;
-                countBanknote1Usd += count * 10;
+            if (issuance10Usd > numberOfBanknotes10usd) {
+                count = issuance10Usd - numberOfBanknotes10usd;
+                issuance10Usd = numberOfBanknotes10usd;
+                issuance1Usd += count * 10;
             }
-            if (countBanknote1Usd > banknote1usd) countBanknote1Usd = 0;
-        } else if (usd < 100 && usd > 10) {
-            countBanknote10Usd = usd % 100 / 10;
-            countBanknote1Usd = usd % 10;
-            if (countBanknote10Usd > banknote10usd) {
-                count = countBanknote10Usd - banknote10usd;
-                countBanknote10Usd = banknote10usd;
-                countBanknote1Usd += count * 10;
-            }
-            if (countBanknote1Usd > banknote1usd) countBanknote1Usd = 0;
-        } else if (usd < 10 && usd > 0) {
-            countBanknote1Usd = usd % 10;
-            if (countBanknote1Usd > banknote1usd) countBanknote1Usd = 0;
-        }
-        else System.out.println("Такой суммы нет!");
-        sumaCountBanknote = countBanknote1Usd + (countBanknote10Usd * 10) + (countBanknote100Usd * 100);
-        System.out.println("Номиналы банкнот 1usd = " + countBanknote1Usd +
-                "10usd = " + countBanknote10Usd +
-                "100usd = " + countBanknote100Usd +
-                "Сумма всех банкнот = " + sumaCountBanknote);
-
+            if (issuance1Usd > numberOfBanknotes1usd) issuance1Usd = 0;
+            System.out.println("Номиналы банкнот 100usd = " + issuance100Usd +
+                    " 10usd = " + issuance10Usd +
+                    " 1usd = " + issuance1Usd + "\n" +
+                    "Сумма всех банкнот = " + usd);
+        } else if (sumBanknotesInTerminal < usd) {
+            System.out.println("Извените в банкомате такой скммы нету");
+        } else System.out.println("Такой суммы нет!");
     }
-    public static int Grades(int assessment) {
-        if (assessment <= 60 && assessment > 0) return assessment = 2;
-        else if (assessment > 60 && assessment < 73) return assessment = 3;
-        else if (assessment >= 73 && assessment < 91) return assessment = 4;
-        else if (assessment >=91 && assessment <=100) return assessment = 5;
-        else return assessment = 0;
+
+    private static int convertingPointsGrades(int grade) {
+        if (grade > 0 && grade <= 60) return grade = 2;
+        else if (grade > 60 && grade < 73) return grade = 3;
+        else if (grade >= 73 && grade < 91) return grade = 4;
+        else if (grade >= 91 && grade <= 100) return grade = 5;
+        else return grade = 0;
     }
 }
