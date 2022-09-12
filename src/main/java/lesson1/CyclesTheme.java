@@ -35,13 +35,54 @@ public class CyclesTheme {
             System.out.println(array[i] + " ");
         }
 
-        System.out.println("№3 Вывод реверсивного числа и суммы его цифр");
+        System.out.println("\n№3 Вывод реверсивного числа и суммы его цифр");
         int number = 1234;
-        int sum = 0;
-        int count = 0;
-        while (number != 0){
+        int sumDigit = 0;
+        int digit = 0;
+        StringBuilder inverseNumber = new StringBuilder();
+        while (number != 0) {
+            digit = number % 10;
+            inverseNumber.append(digit);
+            sumDigit += digit;
             number /= 10;
-            System.out.println(number);
         }
+        System.out.println("Исходное число в обратном порядке " + inverseNumber + "\n" +
+                "Сумма цифр числа " + sumDigit + "\n");
+
+        System.out.println("№4 Вывод чисел на консоль в несколько строк");
+        int finalNumber = 24;
+        int count = 0;
+        for (int i = 1; i < finalNumber; i += 2) {
+            count++;
+            System.out.printf("%3d", i);
+            if (count % 5 == 0) {
+                System.out.println("");
+            }
+        }
+        while (count % 5 != 0) {
+            System.out.printf("%3d", 0);
+            count++;
+        }
+
+        System.out.println("\n\n№5 Проверка количества единиц на четность");
+        int num = 3141591;
+        int newNum = num;
+        int countNum = 0;
+        String parityCheck = "";
+        while (newNum != 0) {
+            newNum /= 10;
+            countNum++;
+        }
+        if (countNum % 2 == 0) {
+            parityCheck = "чётное";
+        } else {
+            parityCheck = "нечётное";
+        }
+        System.out.println("число " + num + " содержит " + countNum + " (" +
+                parityCheck + ") " + "количество единиц" + "\n");
+
+        System.out.println("№6 Отображение фигур в консоли");
+
+
     }
 }
