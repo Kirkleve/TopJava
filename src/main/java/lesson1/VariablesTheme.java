@@ -1,4 +1,4 @@
-package home_work_1;
+package lesson1;
 
 public class VariablesTheme {
     public static void main(String[] args) {

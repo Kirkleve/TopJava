@@ -1,4 +1,6 @@
-package home_work_1;
+package lesson1;
+
+import java.text.DecimalFormat;
 
 public class IfElseStatementTheme {
     public static void main(String[] args) {
@@ -92,14 +94,10 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n№6 Определение суммы вклада и начисленных банком %");
-        /*
-        проверки нужны только для определения %.
-        Вычисления и вывод что-то на консоль нужно делать один
-        раз в самом конце, после определения процента
-         */
         int depositAmount = 300_000;
         double percent = 0;
         double accruedInterest;
+        DecimalFormat format = new DecimalFormat("#.00");
         if (depositAmount > 0) {
             if (depositAmount < 100_000) {
                 percent = 0.05;
@@ -108,19 +106,19 @@ public class IfElseStatementTheme {
             } else if (depositAmount >300_000) {
                 percent = 0.1;
             }
-            System.out.println("Сумма вклада " + depositAmount);
-            accruedInterest = (depositAmount * percent);
-            System.out.println((int)(percent * 100) + "% годовых, прибыли " + (int)accruedInterest +
-                    ", общая сумма " + (int)(depositAmount + accruedInterest));
+            System.out.println("Сумма вклада " + format.format(depositAmount));
+            accruedInterest = depositAmount * percent;
+            System.out.println((int)(percent * 100) + "% годовых, прибыли " + format.format(accruedInterest) +
+                    ", общая сумма " + format.format(depositAmount + accruedInterest));
         } else {
             System.out.println("Вы ввели неверные данные!");
         }
 
         System.out.println("\n№7 Определение оценки по предметам");
         int lessonHistory = 59;
-        int gradesHistory = convertingPointsGrades(lessonHistory);
+        int gradesHistory = defineAnEstimate(lessonHistory);
         int lessonIT = 91;
-        int gradesIT = convertingPointsGrades(lessonIT);
+        int gradesIT = defineAnEstimate(lessonIT);
         int averageScore = (gradesHistory + gradesIT) / 2;
         int averagePercentage = (lessonHistory + lessonIT) / 2;
         System.out.println("По истории оценка " + gradesHistory + "\n" +
@@ -167,11 +165,11 @@ public class IfElseStatementTheme {
                     " 1usd = " + issuance1Usd + "\n" +
                     "Сумма всех банкнот = " + usd);
         } else if (sumBanknotesInTerminal < usd) {
-            System.out.println("Извените в банкомате такой скммы нету");
+            System.out.println("Извините в банкомате такой суммы нету");
         } else System.out.println("Такой суммы нет!");
     }
 
-    private static int convertingPointsGrades(int grade) {
+    private static int defineAnEstimate(int grade) {
         if (grade > 0 && grade <= 60) return grade = 2;
         else if (grade > 60 && grade < 73) return grade = 3;
         else if (grade >= 73 && grade < 91) return grade = 4;
