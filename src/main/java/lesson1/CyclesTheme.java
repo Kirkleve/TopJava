@@ -1,5 +1,7 @@
 package lesson1;
 
+import java.lang.reflect.Array;
+
 public class CyclesTheme {
     public static void main(String[] args) {
         System.out.println("№1 Подсчет суммы четных и нечетных чисел");
@@ -82,7 +84,102 @@ public class CyclesTheme {
                 parityCheck + ") " + "количество единиц" + "\n");
 
         System.out.println("№6 Отображение фигур в консоли");
+        StringBuilder symbolStar = new StringBuilder();
+        StringBuilder symbolGrid = new StringBuilder();
+        StringBuilder symbolDolar = new StringBuilder();
+        int countSimbolStar = 50;
+        int countSymbolGrid = 15;
+        int countSymbolDolar = 9;
+        int valueSymbolGrid = 5;
+        int valueSymbolDolar = 2;
+        int index = 1;
+        for (int i = 0; i < countSimbolStar; i++) {
+            if (i % 10 == 0) {
+                symbolStar.append('\n');
+            }
+            symbolStar.append('*');
+        }
+        while (countSymbolGrid != 0) {
+            if (index > valueSymbolGrid ) {
+                symbolGrid.append('\n');
+                index = 0;
+                valueSymbolGrid--;
+            } else {
+                symbolGrid.append('#');
+                countSymbolGrid--;
+            }
+            index++;
+        }
+        do {
+            symbolDolar.append('$');
+            if (index == valueSymbolDolar) {
+                if (valueSymbolDolar / 4 == 0) {
+                    valueSymbolDolar++;
+                } else {
+                    valueSymbolDolar--;
+                }
+                symbolDolar.append('\n');
+                index = 1;
+            }
+            index++;
+            countSymbolDolar--;
+        } while (countSymbolDolar != 0);
+        System.out.println("" + symbolStar + "\n\n" + symbolGrid + "\n\n" +
+                symbolDolar + "\n");
 
+        System.out.println("№7 Отображение ASCII-символов");
+        System.out.println(" Dec  Char");
+        for (int i = 0; i <= 47; i++) {
+            if (i % 2 != 0) System.out.printf("%4d%5c%n", i, (char)i);
+        }
+        for (int i = 97; i <= 122; i++) {
+            if (i % 2 == 0) System.out.printf("%4d%5c%n", i, (char)i);
+        }
 
+        System.out.println("\n№8 Проверка, является ли число палиндромом");
+        int setNumbers = 1234321;
+        int revers = 0;
+        int i = 0;
+        int originalNum = setNumbers;
+        while (setNumbers != 0) {
+            revers = setNumbers % 10;
+            i = i * 10 + revers;
+            setNumbers /= 10;
+        }
+        if (originalNum == i) System.out.println("Это число палиндром\n");
+        else System.out.println("Это число не палиндром\n");
+
+        System.out.println("№9 Определение, является ли число счастливым");
+        int luckyNumber = 678777;
+        int originalLuckyNumber = luckyNumber;
+        int sumReversNumber = 0;
+        int sumFirstNumbers = 0;
+        String result = "";
+        while (luckyNumber != 0) {
+            if (luckyNumber / 1000 != 0) {
+                sumReversNumber += luckyNumber % 10;
+            } else {
+                sumFirstNumbers += luckyNumber % 10;
+            }
+            luckyNumber /= 10;
+        }
+        System.out.println("Сумма цифр " + (originalLuckyNumber / 1000) + " = " + sumFirstNumbers + "\n" +
+                "Сумма цифр " + (originalLuckyNumber % 1000) + " = " + sumReversNumber);
+        System.out.println(sumFirstNumbers == sumReversNumber ? "Число счастливое" : "Число не счастливое");
+
+        System.out.println("\n№10 Вывод таблицы умножения Пифагора");
+        int tablePifagora = 0;
+        int ind = 2;
+        System.out.println("         Таблица Пифагора");
+        System.out.printf(" |%4d%4d%4d%4d%4d%4d%4d%4d", 2, 3, 4 , 5, 6, 7, 8, 9);
+        System.out.println("\n----------------------------------");
+        for (int j = 2; j < 10; j++) {
+            System.out.print(j+"|");
+            for (int k = 2; k < 10; k++) {
+                tablePifagora = j * k;
+                System.out.printf("%4d",tablePifagora);
+            }
+            System.out.println();
+        }
     }
 }
