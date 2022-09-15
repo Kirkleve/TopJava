@@ -1,0 +1,28 @@
+package lesson1;
+
+import java.util.Random;
+
+public class GuessingGame {
+    public static void main(String[] args) {
+        System.out.println("Угадай число");
+        Random rnd = new Random();
+        int compNumber = rnd.nextInt(100);
+        int min = 0;
+        int max = 100;
+        int playerNumber = max / 2;
+        int count = 0;
+        while (playerNumber != compNumber) {
+            if (playerNumber > compNumber) {
+                System.out.println("Число " + playerNumber + " больше того, что загадал компьютер");
+                max = playerNumber;
+                playerNumber -= (max - min) / 2;
+            } else if (playerNumber < compNumber){
+                System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер");
+                min = playerNumber;
+                playerNumber += (max - min) / 2;
+            }
+            count++;
+        }
+        System.out.println("Вы победили за " + count + " попыток");
+    }
+}

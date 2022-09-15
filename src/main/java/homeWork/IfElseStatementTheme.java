@@ -1,4 +1,4 @@
-package lesson1;
+package homeWork;
 
 import java.text.DecimalFormat;
 
