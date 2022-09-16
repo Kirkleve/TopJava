@@ -1,64 +1,68 @@
-package homeWork;
-
-import java.lang.reflect.Array;
+package lesson_1;
 
 public class CyclesTheme {
     public static void main(String[] args) {
         System.out.println("№1 Подсчет суммы четных и нечетных чисел");
-        int negativeNumber = -10;
-        int positiveNumber = 21;
-        int sumPositive = 0;
-        int sumNegative = 0;
-        System.out.print("В промежутке [" + negativeNumber + ", " + positiveNumber + "],");
+        int startRange = -10;
+        int endRange = 21;
+        int sumOdd = 0;
+        int sumEven = 0;
+        System.out.print("В промежутке [" + startRange + ", " + endRange + "],");
         do {
-            sumNegative += negativeNumber;
-            negativeNumber++;
-        } while (negativeNumber != 0);
-        do {
-            sumPositive += positiveNumber;
-            positiveNumber--;
-        } while (positiveNumber != 0);
-        System.out.print(" сумма чётных чисел = " + sumPositive +
-                ", сумма отрицательных чисел равна = " + sumNegative + "\n\n");
+            if (startRange % 2 == 0) {
+                sumOdd += startRange;
+            } else {
+                sumEven += startRange;
+            }
+            startRange++;
+        } while (startRange != endRange);
+        System.out.print(" сумма чётных чисел = " + sumOdd +
+                ", сумма нечётных чисел равна = " + sumEven + "\n\n");
 
         System.out.println("№2 Вывод чисел в интервале (min и max) в порядке убывания");
-        int[] array = new int[]{-1, 5, 10};
-        int max = array[0];
-        int min = 0;
-        for (int i = 1; i < array.length; i++) {
-            if (max < array[i]) max = array[i];
+        int num1 = -1;
+        int num2 = 5;
+        int num3 = 10;
+        int maximumNmber = 0;
+        int minimumNumber = 0;
+        if (num1 > num2 && num1 > num3) {
+            maximumNmber = num1;
+            if (num2 > num3) minimumNumber = num3;
+            else minimumNumber = num2;
+        } else if (num1 < num2 && num2 > num3) {
+            maximumNmber = num2;
+            if (num1 > num3) minimumNumber = num3;
+            else minimumNumber = num1;
+        } else if (num1 < num3 && num2 < num3) {
+            maximumNmber = num3;
+            if (num1 > num2) minimumNumber = num2;
+            else minimumNumber = num1;
         }
-        for (int i = 0; i < array.length; i++) {
-            if (min > array[i]) min = array[i];
-        }
-        array[0] = min;
-        array[array.length - 1] = max;
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i] + " ");
+        for (int i = maximumNmber - 1; i > minimumNumber; i--) {
+            System.out.printf(i + " ");
         }
 
-        System.out.println("\n№3 Вывод реверсивного числа и суммы его цифр");
+        System.out.println("\n\n№3 Вывод реверсивного числа и суммы его цифр");
         int number = 1234;
-        int sumDigit = 0;
-        int digit = 0;
-        StringBuilder inverseNumber = new StringBuilder();
+        int sumDigits = 0;
+        System.out.print("Исходное число в обратном порядке ");
         while (number != 0) {
+            int digit = 0;
             digit = number % 10;
-            inverseNumber.append(digit);
-            sumDigit += digit;
+            sumDigits += digit;
             number /= 10;
+            System.out.print(digit);
         }
-        System.out.println("Исходное число в обратном порядке " + inverseNumber + "\n" +
-                "Сумма цифр числа " + sumDigit + "\n");
+        System.out.println("\nСумма цифр числа " + sumDigits + "\n");
 
         System.out.println("№4 Вывод чисел на консоль в несколько строк");
-        int finalNumber = 24;
+        endRange = 24;
         int count = 0;
-        for (int i = 1; i < finalNumber; i += 2) {
+        for (int i = 1; i < endRange; i += 2) {
             count++;
             System.out.printf("%3d", i);
             if (count % 5 == 0) {
-                System.out.println("");
+                System.out.println();
             }
         }
         while (count % 5 != 0) {
@@ -67,20 +71,20 @@ public class CyclesTheme {
         }
 
         System.out.println("\n\n№5 Проверка количества единиц на четность");
-        int num = 3141591;
-        int newNum = num;
-        int countNum = 0;
-        String parityCheck = "";
-        while (newNum != 0) {
-            newNum /= 10;
-            countNum++;
+        number = 3141591;
+        int copyNumber = number;
+        int countOnes = 0;
+        while (copyNumber != 0) {
+            if (copyNumber % 10 == 1) countOnes++;
+            copyNumber /= 10;
         }
-        if (countNum % 2 == 0) {
+        String parityCheck = "";
+        if (countOnes % 2 == 0) {
             parityCheck = "чётное";
         } else {
             parityCheck = "нечётное";
         }
-        System.out.println("число " + num + " содержит " + countNum + " (" +
+        System.out.println("число " + number + " содержит " + countOnes + " (" +
                 parityCheck + ") " + "количество единиц" + "\n");
 
         System.out.println("№6 Отображение фигур в консоли");

@@ -1,8 +1,8 @@
-package lesson1;
+package lesson_1;
 
 import java.util.Random;
 
-public class GuessingGame {
+public class MyFirstGame {
     public static void main(String[] args) {
         System.out.println("Угадай число");
         Random rnd = new Random();

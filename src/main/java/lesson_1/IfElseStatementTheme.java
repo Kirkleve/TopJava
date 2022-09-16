@@ -1,4 +1,4 @@
-package homeWork;
+package lesson_1;
 
 import java.text.DecimalFormat;
 
@@ -94,7 +94,7 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n№6 Определение суммы вклада и начисленных банком %");
-        int depositAmount = 300_000;
+        double depositAmount = 300_000;
         double percent = 0;
         double accruedInterest;
         DecimalFormat format = new DecimalFormat("#.00");
@@ -106,10 +106,10 @@ public class IfElseStatementTheme {
             } else if (depositAmount >300_000) {
                 percent = 0.1;
             }
-            System.out.println("Сумма вклада " + format.format(depositAmount));
+            System.out.printf("Сумма вклада %.2f%n", depositAmount);
             accruedInterest = depositAmount * percent;
-            System.out.println((int)(percent * 100) + "% годовых, прибыли " + format.format(accruedInterest) +
-                    ", общая сумма " + format.format(depositAmount + accruedInterest));
+            System.out.printf("%.0f процентов годовых, прибыли %.2f, общая сумма %.2f%n",
+                    percent * 100, accruedInterest, depositAmount + accruedInterest);
         } else {
             System.out.println("Вы ввели неверные данные!");
         }
