@@ -15,30 +15,21 @@ public class CyclesTheme {
                 sumEven += startRange;
             }
             startRange++;
-        } while (startRange != endRange);
+        } while (startRange <= endRange);
         System.out.print(" сумма чётных чисел = " + sumOdd +
                 ", сумма нечётных чисел равна = " + sumEven + "\n\n");
 
         System.out.println("№2 Вывод чисел в интервале (min и max) в порядке убывания");
-        int num1 = -1;
+        int num1 = 10;
         int num2 = 5;
-        int num3 = 10;
-        int maximumNmber = 0;
-        int minimumNumber = 0;
-        if (num1 > num2 && num1 > num3) {
-            maximumNmber = num1;
-            if (num2 > num3) minimumNumber = num3;
-            else minimumNumber = num2;
-        } else if (num1 < num2 && num2 > num3) {
-            maximumNmber = num2;
-            if (num1 > num3) minimumNumber = num3;
-            else minimumNumber = num1;
-        } else if (num1 < num3 && num2 < num3) {
-            maximumNmber = num3;
-            if (num1 > num2) minimumNumber = num2;
-            else minimumNumber = num1;
-        }
-        for (int i = maximumNmber - 1; i > minimumNumber; i--) {
+        int num3 = -1;
+        int max = num1;
+        int min = num2;
+        if (num2 > max) max = num2;
+        if (num3 > max) max = num3;
+        if (num1 < min) min = num1;
+        if (num3 < min) min = num3;
+        for (int i = max - 1; i > min; i--) {
             System.out.printf(i + " ");
         }
 
@@ -88,9 +79,7 @@ public class CyclesTheme {
                 parityCheck + ") " + "количество единиц" + "\n");
 
         System.out.println("№6 Отображение фигур в консоли");
-        StringBuilder symbolStar = new StringBuilder();
-        StringBuilder symbolGrid = new StringBuilder();
-        StringBuilder symbolDolar = new StringBuilder();
+
         int countSimbolStar = 50;
         int countSymbolGrid = 15;
         int countSymbolDolar = 9;
@@ -99,77 +88,83 @@ public class CyclesTheme {
         int index = 1;
         for (int i = 0; i < countSimbolStar; i++) {
             if (i % 10 == 0) {
-                symbolStar.append('\n');
+                System.out.print("\n");
             }
-            symbolStar.append('*');
+            System.out.print("*");
         }
+        System.out.println("\n");
         while (countSymbolGrid != 0) {
             if (index > valueSymbolGrid ) {
-                symbolGrid.append('\n');
+                System.out.print("\n");
                 index = 0;
                 valueSymbolGrid--;
             } else {
-                symbolGrid.append('#');
+                System.out.print("#");
                 countSymbolGrid--;
             }
             index++;
         }
+        System.out.println("\n");
         do {
-            symbolDolar.append('$');
+            System.out.print("$");
             if (index == valueSymbolDolar) {
                 if (valueSymbolDolar / 4 == 0) {
                     valueSymbolDolar++;
                 } else {
                     valueSymbolDolar--;
                 }
-                symbolDolar.append('\n');
+                System.out.print("\n");
                 index = 1;
             }
             index++;
             countSymbolDolar--;
         } while (countSymbolDolar != 0);
-        System.out.println("" + symbolStar + "\n\n" + symbolGrid + "\n\n" +
-                symbolDolar + "\n");
+        System.out.println("\n");
 
         System.out.println("№7 Отображение ASCII-символов");
         System.out.println(" Dec  Char");
         for (int i = 0; i <= 47; i++) {
-            if (i % 2 != 0) System.out.printf("%4d%5c%n", i, (char)i);
+            if (i % 2 != 0) System.out.printf("%4d%5c%n", i, (char) i);
         }
         for (int i = 97; i <= 122; i++) {
-            if (i % 2 == 0) System.out.printf("%4d%5c%n", i, (char)i);
+            if (i % 2 == 0) System.out.printf("%4d%5c%n", i, (char) i);
         }
 
         System.out.println("\n№8 Проверка, является ли число палиндромом");
-        int setNumbers = 1234321;
-        int revers = 0;
-        int i = 0;
-        int originalNum = setNumbers;
-        while (setNumbers != 0) {
-            revers = setNumbers % 10;
-            i = i * 10 + revers;
-            setNumbers /= 10;
+        int srcNum = 1234321;
+        int reverseNum = 0;
+        int copySrcNum = srcNum;
+        while (srcNum != 0) {
+            int digit = 0;
+            digit = srcNum % 10;
+            reverseNum = reverseNum * 10 + digit;
+            srcNum /= 10;
         }
-        if (originalNum == i) System.out.println("Это число палиндром\n");
+        if (copySrcNum == reverseNum) System.out.println("Это число палиндром\n");
         else System.out.println("Это число не палиндром\n");
 
         System.out.println("№9 Определение, является ли число счастливым");
         int luckyNumber = 678777;
-        int originalLuckyNumber = luckyNumber;
-        int sumReversNumber = 0;
+        int copyLuckyNum = luckyNumber;
+        int sumSecondNumbers = 0;
         int sumFirstNumbers = 0;
-        String result = "";
+        count = 1;
         while (luckyNumber != 0) {
-            if (luckyNumber / 1000 != 0) {
-                sumReversNumber += luckyNumber % 10;
+            luckyNumber /= 100;
+            count *= 10;
+        }
+        luckyNumber = copyLuckyNum;
+        while (luckyNumber != 0) {
+            if (luckyNumber / count != 0) {
+                sumSecondNumbers += luckyNumber % 10;
             } else {
                 sumFirstNumbers += luckyNumber % 10;
             }
             luckyNumber /= 10;
         }
-        System.out.println("Сумма цифр " + (originalLuckyNumber / 1000) + " = " + sumFirstNumbers + "\n" +
-                "Сумма цифр " + (originalLuckyNumber % 1000) + " = " + sumReversNumber);
-        System.out.println(sumFirstNumbers == sumReversNumber ? "Число счастливое" : "Число не счастливое");
+        System.out.println("Сумма цифр " + (copyLuckyNum / count) + " = " + sumFirstNumbers + "\n" +
+                "Сумма цифр " + (copyLuckyNum % count) + " = " + sumSecondNumbers);
+        System.out.println(sumFirstNumbers == sumSecondNumbers ? "Число счастливое" : "Число не счастливое");
 
         System.out.println("\n№10 Вывод таблицы умножения Пифагора");
         int tablePifagora = 0;
