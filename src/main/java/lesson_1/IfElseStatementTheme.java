@@ -1,7 +1,5 @@
 package lesson_1;
 
-import java.text.DecimalFormat;
-
 public class IfElseStatementTheme {
     public static void main(String[] args) {
         System.out.println("№1 Перевод псевдокода на язык Java");
@@ -97,7 +95,6 @@ public class IfElseStatementTheme {
         double depositAmount = 300_000;
         double percent = 0;
         double accruedInterest;
-        DecimalFormat format = new DecimalFormat("#.00");
         if (depositAmount > 0) {
             if (depositAmount < 100_000) {
                 percent = 0.05;
