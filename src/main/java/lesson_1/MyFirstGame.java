@@ -6,9 +6,9 @@ public class MyFirstGame {
     public static void main(String[] args) {
         System.out.println("Угадай число");
         Random rnd = new Random();
-        int compNumber = rnd.nextInt(100);
+        int compNumber = rnd.nextInt(10000);
         int min = 0;
-        int max = 100;
+        int max = 10000;
         int playerNumber = max / 2;
         int count = 0;
         while (playerNumber != compNumber) {
