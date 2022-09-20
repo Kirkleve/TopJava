@@ -1,29 +1,72 @@
 package lesson_2;
 
 public class Wolf {
-    String gender;
-    String nickName;
-    double weight;
-    short age;
-    String color;
+    private String gender;
+    private String nickName;
+    private double weight;
+    private short age;
+    private String color;
 
-    void walk() {
+    public String getGender() {
+        return gender;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public short getAge() {
+        return age;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setAge(short age) {
+        short maxAge = 8;
+        if (age >= maxAge) {
+            System.out.println("Некорректный возраст");
+        } else this.age = age;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void walk() {
         System.out.println("Идёт");
     }
 
-    void sit() {
+    public void sit() {
         System.out.println("Сидит");
     }
 
-    void run() {
+    public void run() {
         System.out.println("Бежит");
     }
 
-    void howl() {
+    public void howl() {
         System.out.println("Воет");
     }
 
-    void hunt() {
+    public void hunt() {
         System.out.println("Охотится");
     }
 }

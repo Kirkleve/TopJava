@@ -3,13 +3,14 @@ package lesson_2;
 public class WolfTest {
     public static void main(String[] args) {
         Wolf wolf = new Wolf();
-        wolf.gender = "Кобель";
-        wolf.nickName = "Зэвр";
-        wolf.age = 3;
-        wolf.weight = 13.560;
-        wolf.color = "Пепельный";
+        wolf.setGender("Кобель");
+        wolf.setNickName("Зэвр");
+        wolf.setAge((short) 3);
+        wolf.setWeight(13.560);
+        wolf.setColor("Пепельный");
         System.out.printf("Пол: %s%nКличка: %s%nВозраст: %d%nВес: %.3f%nЦвет: %s%n",
-                        wolf.gender, wolf.nickName, wolf.age, wolf.weight, wolf.color);
+                        wolf.getGender(), wolf.getNickName(), wolf.getAge(),
+                        wolf.getWeight(), wolf.getColor());
         wolf.walk();
         wolf.sit();
         wolf.run();
