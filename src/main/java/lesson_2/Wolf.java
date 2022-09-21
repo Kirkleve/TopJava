@@ -7,36 +7,30 @@ public class Wolf {
     private short age;
     private String color;
 
-    public String getGender() {
-        return gender;
+    public String getGender() { return gender; }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getNickName() {
         return nickName;
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public short getAge() {
-        return age;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public short getAge() {
+        return age;
     }
 
     public void setAge(short age) {
@@ -44,6 +38,10 @@ public class Wolf {
         if (age >= maxAge) {
             System.out.println("Некорректный возраст");
         } else this.age = age;
+    }
+
+    public String getColor() {
+        return color;
     }
 
     public void setColor(String color) {

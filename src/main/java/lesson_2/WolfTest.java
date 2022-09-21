@@ -9,8 +9,8 @@ public class WolfTest {
         wolf.setWeight(13.560);
         wolf.setColor("Пепельный");
         System.out.printf("Пол: %s%nКличка: %s%nВозраст: %d%nВес: %.3f%nЦвет: %s%n",
-                        wolf.getGender(), wolf.getNickName(), wolf.getAge(),
-                        wolf.getWeight(), wolf.getColor());
+                wolf.getGender(), wolf.getNickName(), wolf.getAge(),
+                wolf.getWeight(), wolf.getColor());
         wolf.walk();
         wolf.sit();
         wolf.run();
