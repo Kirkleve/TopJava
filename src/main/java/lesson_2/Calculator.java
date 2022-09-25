@@ -5,91 +5,69 @@ import java.util.Scanner;
 public class Calculator {
     private int number1;
     private int number2;
-    private int result;
-    private char symbol;
+    private char mathOperation;
 
-    public void setNumber1() {
-        System.out.print("Введите первое число: ");
-        number1 = new Scanner(System.in).nextInt();
+    public void setNumber1(int number) {
+        number1 = number;
     }
 
     public int getNumber1() {
         return number1;
     }
 
-    public void setNumber2() {
-        System.out.print("Введите второе число: ");
-        number2 = new Scanner(System.in).nextInt();
+    public void setNumber2(int number) {
+        number2 = number;
     }
 
     public int getNumber2() {
         return number2;
     }
 
-    public void setResult(int number1, int symbol, int number2) {
+    public char setMathOperation(char mathOperation) {
+        this.mathOperation = mathOperation;
+        while (this.mathOperation != '+' && this.mathOperation != '-' && this.mathOperation != '*' && this.mathOperation != '/'
+                && mathOperation != '^' && mathOperation != '%') {
+            System.out.println("Неверный математический символ, введите один из символов + - * / ^ %");
+            this.mathOperation = new Scanner(System.in).nextLine().charAt(0);
+        }
+        return this.mathOperation;
+    }
+
+    public char getMathOperation() {
+        return mathOperation;
+    }
+
+    public int gettingResult(int number1, int symbol, int number2) {
+        int result;
         switch (symbol) {
             case '+':
                 result = number1 + number2;
-                return;
+                break;
             case '-':
                 result = number1 - number2;
-                return;
+                break;
             case '*':
                 result = number1 * number2;
-                return;
+                break;
             case '/':
                 result = number1 / number2;
-                return;
+                break;
             case '^':
                 int num = number1;
                 for (int i = 1; i < number2; i++)
                     num *= number1;
                 result = num;
-                return;
+                break;
             case '%':
                 result = number1 % number2;
-                return;
+                break;
             default:
-                System.out.println("Неверный матиматический знак");
+                throw new IllegalArgumentException("Извените такого символа нет!");
         }
+        return result;
     }
 
-    public void getResult() {
-        System.out.printf("%d %c %d = %d%n", number1, symbol, number2, result);
-    }
-
-    public char setSymbol() {
-        System.out.print("Введите знак математической операции: ");
-        symbol = new Scanner(System.in).nextLine().charAt(0);
-        while (symbol != '+' && symbol != '-' && symbol != '*' && symbol != '/'
-                && symbol != '^' && symbol != '%') {
-            System.out.println("Неверный математический символ, введите один из символов + - * / ^ %");
-            symbol = new Scanner(System.in).nextLine().charAt(0);
-        }
-        return symbol;
-    }
-
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public void returnCalculation() {
-        System.out.println("Хотите продолжить вычисления? [yes/no]:");
-        String choice = new Scanner(System.in).nextLine();
-        while (!choice.equals("no")) {
-            if (choice.equals("yes")) {
-                setNumber1();
-                setSymbol();
-                setNumber2();
-                setResult(getNumber1(), getSymbol(), getNumber2());
-                getResult();
-                System.out.println("Хотите продолжить вычисления? [yes/no]:");
-                choice = new Scanner(System.in).nextLine();
-            } else {
-                System.out.println("Хотите продолжить вычисления? [yes/no]:");
-                choice = new Scanner(System.in).nextLine();
-            }
-        }
-        System.out.println("Прощайте был рад помоч");
+    public void printResult(int result) {
+        System.out.printf("%d %c %d = %d%n", number1, mathOperation, number2, result);
     }
 }

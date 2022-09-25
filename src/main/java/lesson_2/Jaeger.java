@@ -11,14 +11,6 @@ public class Jaeger {
     private int armor;
 
     public Jaeger() {
-        modelName = "";
-        mark = "";
-        origin = "";
-        height = 0;
-        weight = 0;
-        speed = 0;
-        strength = 0;
-        armor = 0;
     }
 
     public Jaeger(String modelName, String mark, String origin, double height, double weight,
@@ -97,9 +89,10 @@ public class Jaeger {
         this.armor = armor;
     }
 
-    public void informationAboutJaeger (Jaeger jaeger) {
-        System.out.printf("Technical Information %nModel Name = %s%nMark = %s%nOrigin = %s%n" +
-                "Jaeger Specifications %nHeight = %.1f%nWeight = %.2f%nSpeed = %d%nStrength = %d%nArmor = %d%n%n",
-                modelName, mark, origin, height, weight, speed, strength, armor);
+    public String toString() {
+        return  "Technical Information\nModel Name = " + getModelName() + "\nMark = " + getMark() +
+                "\nOrigin = " + getOrigin() + "\nJaeger Specifications \nHeight = " + getHeight() +
+                "\nWeight = " + getWeight() + "\nSpeed = " + getSpeed() + "\nStrength = " + getStrength() +
+                "\nArmor = " + getArmor() + "\n";
     }
 }

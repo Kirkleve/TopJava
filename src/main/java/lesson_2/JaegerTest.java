@@ -11,9 +11,11 @@ public class JaegerTest {
         crimsonTyphoon.setSpeed(9);
         crimsonTyphoon.setStrength(8);
         crimsonTyphoon.setArmor(6);
+
         Jaeger strikerEureka = new Jaeger("Striker Eureka", "Mark-5", "Australia",
                 76.2, 1.850, 10, 10, 9);
-        crimsonTyphoon.informationAboutJaeger(crimsonTyphoon);
-        strikerEureka.informationAboutJaeger(strikerEureka);
+        System.out.println(crimsonTyphoon.toString());
+        System.out.println(strikerEureka.toString());
+
     }
 }
