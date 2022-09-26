@@ -17,8 +17,8 @@ public class CalculatorTest {
                 System.out.print("Введите второе число: ");
                 int number2 = new Scanner(System.in).nextInt();
                 calculator.setNumber2(number2);
-                calculator.printResult(calculator.gettingResult(calculator.getNumber1(),
-                        calculator.getMathOperation(), calculator.getNumber2()));
+                System.out.printf("%d %c %d = %d%n", calculator.getNumber1(), calculator.getMathOperation(),
+                        calculator.getNumber2(), calculator.calculate());
                 System.out.println("Хотите продолжить вычисления? [yes/no]:");
                 choice = new Scanner(System.in).nextLine();
             } else {
@@ -26,6 +26,6 @@ public class CalculatorTest {
                 choice = new Scanner(System.in).nextLine();
             }
         }
-        System.out.println("Прощайте был рад помоч");
+        System.out.println("Прощайте! Рад был помочь.");
     }
 }

@@ -37,37 +37,25 @@ public class Calculator {
         return mathOperation;
     }
 
-    public int gettingResult(int number1, int symbol, int number2) {
-        int result;
-        switch (symbol) {
+    public int calculate() {
+        switch (mathOperation) {
             case '+':
-                result = number1 + number2;
-                break;
+                return number1 + number2;
             case '-':
-                result = number1 - number2;
-                break;
+                return number1 - number2;
             case '*':
-                result = number1 * number2;
-                break;
+                return number1 * number2;
             case '/':
-                result = number1 / number2;
-                break;
+                return number1 / number2;
             case '^':
-                int num = number1;
+                int result = number1;
                 for (int i = 1; i < number2; i++)
-                    num *= number1;
-                result = num;
-                break;
+                    result *= number1;
+                return result;
             case '%':
-                result = number1 % number2;
-                break;
+                return number1 % number2;
             default:
-                throw new IllegalArgumentException("Извените такого символа нет!");
+                throw new IllegalArgumentException("Извините такого символа нет!");
         }
-        return result;
-    }
-
-    public void printResult(int result) {
-        System.out.printf("%d %c %d = %d%n", number1, mathOperation, number2, result);
     }
 }
