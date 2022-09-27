@@ -24,13 +24,13 @@ public class Calculator {
     }
 
     public char setMathOperation(char mathOperation) {
-        this.mathOperation = mathOperation;
-        while (this.mathOperation != '+' && this.mathOperation != '-' && this.mathOperation != '*' && this.mathOperation != '/'
+
+        while (mathOperation != '+' && mathOperation != '-' && mathOperation != '*' && mathOperation != '/'
                 && mathOperation != '^' && mathOperation != '%') {
             System.out.println("Неверный математический символ, введите один из символов + - * / ^ %");
-            this.mathOperation = new Scanner(System.in).nextLine().charAt(0);
+            mathOperation = new Scanner(System.in).nextLine().charAt(0);
         }
-        return this.mathOperation;
+        return this.mathOperation = mathOperation;
     }
 
     public char getMathOperation() {
