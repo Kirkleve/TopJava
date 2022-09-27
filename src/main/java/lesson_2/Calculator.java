@@ -24,7 +24,6 @@ public class Calculator {
     }
 
     public char setMathOperation(char mathOperation) {
-
         while (mathOperation != '+' && mathOperation != '-' && mathOperation != '*' && mathOperation != '/'
                 && mathOperation != '^' && mathOperation != '%') {
             System.out.println("Неверный математический символ, введите один из символов + - * / ^ %");
