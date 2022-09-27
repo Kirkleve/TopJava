@@ -15,7 +15,7 @@ public class GuessNumberTest {
             if (choice.equals("yes")) {
                 System.out.println("Компьютер загадал число, попробуйте его отгадать,\n" +
                         "тот кто отгадал число первым побеждает, ход первого игрока определяется случайно");
-                guessNumber.hiddeNumber();
+                guessNumber.randomNumber();
                 System.out.println(guessNumber.getCompNumber());
                 if (guessNumber.whoStartGame() == 2) {
                     String temp = player2.getName();

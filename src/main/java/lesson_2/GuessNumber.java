@@ -19,7 +19,7 @@ public class GuessNumber {
         return playerNumber;
     }
 
-    public void hiddeNumber() {
+    public void randomNumber() {
         Random random = new Random();
         compNumber = random.nextInt(100);
     }
