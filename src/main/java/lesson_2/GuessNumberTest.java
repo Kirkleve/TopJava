@@ -6,9 +6,12 @@ public class GuessNumberTest {
     public static void main(String[] args) {
         System.out.println("Угадай число");
         System.out.print("Имя первого игрока: ");
-        Player player1 = new Player();
+        Scanner scanner = new Scanner(System.in);
+        String player = scanner.nextLine();
+        Player player1 = new Player(player);
         System.out.print("Имя второго игрока: ");
-        Player player2 = new Player();
+        player = scanner.nextLine();
+        Player player2 = new Player(player);
         GuessNumber guessNumber = new GuessNumber();
         String choice = "yes";
         while (!choice.equals("no")) {
@@ -16,7 +19,6 @@ public class GuessNumberTest {
                 System.out.println("Компьютер загадал число, попробуйте его отгадать,\n" +
                         "тот кто отгадал число первым побеждает, ход первого игрока определяется случайно");
                 guessNumber.randomNumber();
-                System.out.println(guessNumber.getCompNumber());
                 if (guessNumber.whoStartGame() == 2) {
                     String temp = player2.getName();
                     player2.setName(player1.getName());
@@ -28,12 +30,9 @@ public class GuessNumberTest {
                     if (player1.getNumber() == guessNumber.getCompNumber()) break;
                     player2.setNumber(guessNumber.movesPlayer(player2.getName(), guessNumber.getCompNumber()));
                 }
-                System.out.println("\nХотите повторить игру? [yes/no]:");
-                choice = new Scanner(System.in).nextLine();
-            } else {
-                System.out.println("Хотите повторить игру? [yes/no]:");
-                choice = new Scanner(System.in).nextLine();
             }
+            System.out.println("\nХотите повторить игру? [yes/no]:");
+            choice = scanner.nextLine();
         }
         System.out.println("До новых встреч!");
     }

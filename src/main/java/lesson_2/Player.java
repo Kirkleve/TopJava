@@ -3,11 +3,10 @@ package lesson_2;
 import java.util.Scanner;
 
 public class Player {
-    String name;
-    int number;
+    private String name;
+    private int number;
 
-    public Player() {
-        String namePlayer = new Scanner(System.in).nextLine();
+    public Player(String namePlayer) {
         name = namePlayer;
     }
 
