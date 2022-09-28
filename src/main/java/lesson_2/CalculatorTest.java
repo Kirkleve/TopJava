@@ -14,20 +14,23 @@ public class CalculatorTest {
                 calculator.setNumber1(number1);
                 System.out.print("Введите знак математической операции: ");
                 scanner.nextLine();
-                char mathOperation = scanner.nextLine().charAt(0);
-                calculator.setMathOperation(mathOperation);
+                char mathSign = scanner.nextLine().charAt(0);
+                while (mathSign != '+' && mathSign != '-' && mathSign != '*' && mathSign != '/'
+                        && mathSign != '^' && mathSign != '%') {
+                    System.out.println("Неверный математический символ, введите один из символов + - * / ^ %");
+                    mathSign = new Scanner(System.in).nextLine().charAt(0);
+                }
+                calculator.setMathSign(mathSign);
                 System.out.print("Введите второе число: ");
                 int number2 = scanner.nextInt();
                 calculator.setNumber2(number2);
-                System.out.printf("%d %c %d = %d%n", calculator.getNumber1(), calculator.getMathOperation(),
-                        calculator.getNumber2(), calculator.calculate());
-                System.out.println("Хотите продолжить вычисления? [yes/no]:");
+                int result = calculator.calculate();
+                System.out.printf("%d %c %d = %d%n", number1, mathSign,
+                        number2, result);
                 scanner.nextLine();
-                choice = scanner.nextLine();
-            } else {
-                System.out.println("Хотите продолжить вычисления? [yes/no]:");
-                choice = scanner.nextLine();
             }
+            System.out.println("Хотите продолжить вычисления? [yes/no]:");
+            choice = scanner.nextLine();
         }
         System.out.println("Прощайте! Рад был помочь.");
     }

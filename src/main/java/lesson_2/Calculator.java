@@ -5,39 +5,22 @@ import java.util.Scanner;
 public class Calculator {
     private int number1;
     private int number2;
-    private char mathOperation;
+    private char mathSign;
 
     public void setNumber1(int number) {
         number1 = number;
-    }
-
-    public int getNumber1() {
-        return number1;
     }
 
     public void setNumber2(int number) {
         number2 = number;
     }
 
-    public int getNumber2() {
-        return number2;
-    }
-
-    public char setMathOperation(char mathOperation) {
-        while (mathOperation != '+' && mathOperation != '-' && mathOperation != '*' && mathOperation != '/'
-                && mathOperation != '^' && mathOperation != '%') {
-            System.out.println("Неверный математический символ, введите один из символов + - * / ^ %");
-            mathOperation = new Scanner(System.in).nextLine().charAt(0);
-        }
-        return this.mathOperation = mathOperation;
-    }
-
-    public char getMathOperation() {
-        return mathOperation;
+    public void setMathSign(char mathSign) {
+        this.mathSign = mathSign;
     }
 
     public int calculate() {
-        switch (mathOperation) {
+        switch (mathSign) {
             case '+':
                 return number1 + number2;
             case '-':
