@@ -1,6 +1,5 @@
 package lesson_2;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
@@ -14,7 +13,6 @@ public class GuessNumber {
     }
 
     public void start() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Компьютер загадал число, попробуйте его отгадать,\n" +
                 "тот кто отгадал число первым побеждает, ход первого игрока определяется случайно");
         generateRandomNumber();
