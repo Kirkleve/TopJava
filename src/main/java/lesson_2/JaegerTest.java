@@ -14,8 +14,8 @@ public class JaegerTest {
 
         Jaeger strikerEureka = new Jaeger("Striker Eureka", "Mark-5", "Australia",
                 76.2, 1.850, 10, 10, 9);
-        System.out.println(crimsonTyphoon.toString());
-        System.out.println(strikerEureka.toString());
+        System.out.println(crimsonTyphoon);
+        System.out.println(strikerEureka);
 
     }
 }

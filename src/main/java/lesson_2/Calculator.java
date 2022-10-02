@@ -1,7 +1,5 @@
 package lesson_2;
 
-import java.util.Scanner;
-
 public class Calculator {
     private int number1;
     private int number2;
