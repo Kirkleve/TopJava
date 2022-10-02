@@ -30,19 +30,18 @@ public class GuessNumber {
         }
     }
 
-    public void generateRandomNumber() {
-        int randomPlayer = (int) ((Math.random() * 10) + 1);
-        secretNum = randomPlayer;
+    private void generateRandomNumber() {
+        secretNum = (int) ((Math.random() * 100) + 1);
     }
 
-    public boolean makeMove(Player player) {
+    private boolean makeMove(Player player) {
         System.out.printf("%s угадай число:%n", player.getName());
         player.setNumber(new Scanner(System.in).nextInt());
         if (player.getNumber() == secretNum) {
             System.out.printf("Поздравляю игрок %s победил!)%n", player.getName());
             return true;
         }
-        else if (player.getNumber() > secretNum)
+        if (player.getNumber() > secretNum)
             System.out.println("Число больше загаданного");
         else
             System.out.println("Число меньше загаданного");
