@@ -12,8 +12,7 @@ public class GuessNumber {
         this.player2 = new Player(player2.getName());
     }
 
-    public void start() {
-        System.out.println("Компьютер загадал число, попробуйте его отгадать,\n" +
+    public void start() {        System.out.println("Компьютер загадал число, попробуйте его отгадать,\n" +
                 "тот кто отгадал число первым побеждает, ход первого игрока определяется случайно");
         generateRandomNumber();
         int randomPlayer = 1 + (int) (Math.random() * 2);

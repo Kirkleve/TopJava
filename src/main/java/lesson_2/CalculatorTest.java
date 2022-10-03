@@ -25,8 +25,7 @@ public class CalculatorTest {
                 int number2 = scanner.nextInt();
                 calculator.setNumber2(number2);
                 int result = calculator.calculate();
-                System.out.printf("%d %c %d = %d%n", number1, mathSign,
-                        number2, result);
+                System.out.printf("%d %c %d = %d%n", number1, mathSign, number2, result);
                 scanner.nextLine();
             }
             System.out.println("Хотите продолжить вычисления? [yes/no]:");

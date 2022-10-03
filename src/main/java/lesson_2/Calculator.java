@@ -34,8 +34,7 @@ public class Calculator {
                 return result;
             case '%':
                 return number1 % number2;
-            default:
-                throw new IllegalArgumentException("Извините такого символа нет!");
         }
+        return 0;
     }
 }
