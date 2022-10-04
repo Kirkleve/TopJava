@@ -40,4 +40,4 @@
 ---
 [TopJava](https://topjava.ru/)
 
-[Мои домашние работы](https://github.com/Kirkleve/TopJava/tree/master/src/main/java/lesson_1)
+[Мои домашние работы](https://github.com/Kirkleve/TopJava/tree/master/src/com/startjava)
