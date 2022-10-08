@@ -105,16 +105,19 @@ public class ArrayTheme {
 
         System.out.println("\n№6 Сдвиг элементов массива");
         String[] strArray = new String[]{"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        System.out.println("Начальный массив:\n" + Arrays.toString(strArray));
         length = 0;
         for (int i = 0; i < strArray.length; i++) {
-            if (!strArray[i].equals("") && !strArray[i].isBlank()) {
+            if (strArray[i].isBlank()) {
                 length++;
+                for (int j = i + 1 ; j < strArray.length ; j++) {
+                    strArray[j-1] = strArray[j];
+                }
             }
         }
-        System.out.println(length);
         String[] copyStrArray = new String[length];
-        System.arraycopy(strArray, 0, copyStrArray,0, length);
-        System.out.println(Arrays.toString(strArray));
-        System.out.println(Arrays.toString(copyStrArray));
+        System.out.println("Длинна массива без пустых строк:\n" + length);
+        System.arraycopy(strArray,0,copyStrArray,0, length);
+        System.out.println("Новый копированный массив:\n" + Arrays.toString(copyStrArray));
     }
 }
