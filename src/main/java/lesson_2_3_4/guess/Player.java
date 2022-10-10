@@ -1,4 +1,4 @@
-package lesson_2_3.guess;
+package lesson_2_3_4.guess;
 
 public class Player {
     private final String name;

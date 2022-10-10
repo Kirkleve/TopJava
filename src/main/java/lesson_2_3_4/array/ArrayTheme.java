@@ -1,4 +1,4 @@
-package lesson_2_3.array;
+package lesson_2_3_4.array;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -6,7 +6,7 @@ import java.util.Random;
 public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("№1 Реверс значений массива");
-        int[] intArray = new int[]{2, 4, 5, 6, 1, 3, 7};
+        int[] intArray = {2, 4, 5, 6, 1, 3, 7};
         System.out.println(Arrays.toString(intArray).replace(",", ""));
         int temp;
         int length = intArray.length;
@@ -15,17 +15,22 @@ public class ArrayTheme {
             intArray[length - i - 1] = intArray[i];
             intArray[i] = temp;
         }
-        System.out.println(Arrays.toString(intArray).replace(",", "") + "\n");
+        System.out.println(Arrays.toString(intArray).replace(",", ""));
 
-        System.out.println("№2 Вывод произведения элементов массива");
-        intArray = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        System.out.println("\n№2 Вывод произведения элементов массива");
+        intArray = new int[10];
         length = intArray.length;
-        int multiplication = 1;
-        for (int i = 1; i < length - 1; i++) {
-            multiplication *= intArray[i];
-            System.out.print(i + " = " + multiplication + "; ");
+        for (int i = 0; i < length; i++) {
+            intArray[i] = i;
         }
-        System.out.println();
+        int mult = 1;
+        for (int i = 1; i < length - 1; i++) {
+            mult *= intArray[i];
+            System.out.print(i);
+            if (i != length -2)
+                System.out.print(" * ");
+        }
+        System.out.print(" = " + mult + "\n");
         for (int i = 0; i < length; i++) {
             System.out.print(intArray[i] + "[" + i + "]; ");
             i += length - 1;
@@ -39,27 +44,27 @@ public class ArrayTheme {
         System.out.println("Исходный массив: ");
         for (int i = 0; i < length; i++) {
             doubleArray[i] = random.nextDouble();
-            if (i != 7) {
-                System.out.printf("%6.3f ", doubleArray[i]);
-            } else System.out.println();
+            System.out.printf("%6.3f ", doubleArray[i]);
+            if (i == 7)
+                System.out.println();
         }
-        double averageIndex = doubleArray[length / 2];
+        double middleNum = doubleArray[length / 2];
         int count = 0;
         for (int i = 0; i < length; i++) {
-            if (averageIndex < doubleArray[i]) {
+            if (middleNum < doubleArray[i]) {
                 doubleArray[i] = 0;
                 count++;
             }
         }
         System.out.println("\nИзменённый массив: ");
         for (int i = 0; i < length; i++) {
-            if (i != 7) {
-                System.out.printf("%6.3f ", doubleArray[i]);
-            } else System.out.println();
+            System.out.printf("%6.3f ", doubleArray[i]);
+            if (i == 7)
+                System.out.println();
         }
-        System.out.println("\nКоличество изменённых ячеек = " + count + "\n");
+        System.out.println("\nКоличество изменённых ячеек = " + count);
 
-        System.out.println("№4 Вывод элементов массива лесенкой в обратном порядке");
+        System.out.println("\n№4 Вывод элементов массива лесенкой в обратном порядке");
         char startAlf = 64;
         char endAlf = 90;
         char[] charArray = new char[endAlf - startAlf];
@@ -104,20 +109,20 @@ public class ArrayTheme {
         }
 
         System.out.println("\n№6 Сдвиг элементов массива");
-        String[] strArray = new String[]{"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        String[] strArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         System.out.println("Начальный массив:\n" + Arrays.toString(strArray));
         length = 0;
         for (int i = 0; i < strArray.length; i++) {
             if (strArray[i].isBlank()) {
                 length++;
-                for (int j = i + 1 ; j < strArray.length ; j++) {
-                    strArray[j-1] = strArray[j];
+                for (int j = i + 1; j < strArray.length; j++) {
+                    strArray[j - 1] = strArray[j];
                 }
             }
         }
         String[] copyStrArray = new String[length];
         System.out.println("Длинна массива без пустых строк:\n" + length);
-        System.arraycopy(strArray,0,copyStrArray,0, length);
+        System.arraycopy(strArray, 0, copyStrArray, 0, length);
         System.out.println("Новый копированный массив:\n" + Arrays.toString(copyStrArray));
     }
 }

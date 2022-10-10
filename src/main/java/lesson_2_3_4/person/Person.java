@@ -1,4 +1,4 @@
-package lesson_2_3.person;
+package lesson_2_3_4.person;
 
 public class Person {
     String gender = "man";
