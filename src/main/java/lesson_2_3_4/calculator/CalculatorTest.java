@@ -9,24 +9,20 @@ public class CalculatorTest {
         String choice = "yes";
         while (!choice.equals("no")) {
             if (choice.equals("yes")) {
-                System.out.print("Введите первое число: ");
-                int number1 = scanner.nextInt();
-                calculator.setNumber1(number1);
-                System.out.print("Введите знак математической операции: ");
-                scanner.nextLine();
-                char mathSign = scanner.nextLine().charAt(0);
-                while (mathSign != '+' && mathSign != '-' && mathSign != '*' && mathSign != '/'
-                        && mathSign != '^' && mathSign != '%') {
-                    System.out.println("Неверный математический символ, введите один из символов + - * / ^ %");
-                    mathSign = new Scanner(System.in).nextLine().charAt(0);
+                System.out.println("Введите математическую операцию, в формате 2 + 2");
+                String mathOperation = new Scanner(System.in).nextLine();
+                calculator.splitString(mathOperation);
+                String mathSign = calculator.getMathSign();
+                while (!mathSign.equals("+") && !mathSign.equals("-") && !mathSign.equals("*")
+                        && !mathSign.equals("/") && !mathSign.equals("^") && !mathSign.equals("%")) {
+                    System.out.println("Неверный математический символ, введите только символ + - * / ^ %");
+                    mathSign = new Scanner(System.in).nextLine();
                 }
                 calculator.setMathSign(mathSign);
-                System.out.print("Введите второе число: ");
-                int number2 = scanner.nextInt();
-                calculator.setNumber2(number2);
+                int number1 = calculator.getNumber1();
+                int number2 = calculator.getNumber2();
                 int result = calculator.calculate();
-                System.out.printf("%d %c %d = %d%n", number1, mathSign, number2, result);
-                scanner.nextLine();
+                System.out.printf("%d %s %d = %d%n", number1, mathSign, number2, result);
             }
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
             choice = scanner.nextLine();
