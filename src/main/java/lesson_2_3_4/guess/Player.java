@@ -2,7 +2,7 @@ package lesson_2_3_4.guess;
 
 public class Player {
     private final String name;
-    private int number;
+    private int[] number = new int[10];
 
     public Player(String name) {
         this.name = name;
@@ -12,11 +12,11 @@ public class Player {
         return name;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setNumber(int number, int count) {
+        this.number[count] = number;
     }
 
-    public int getNumber() {
+    public int[] getNumber() {
         return number;
     }
 }

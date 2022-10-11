@@ -1,5 +1,6 @@
 package lesson_2_3_4.guess;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumberTest {
@@ -17,6 +18,8 @@ public class GuessNumberTest {
         while (!choice.equals("no")) {
             if (choice.equals("yes")) {
                 game.start();
+                Arrays.fill(player1.getNumber(),0, game.getCountPlayer1(), 0);
+                Arrays.fill(player2.getNumber(),0, game.getCountPlayer2(), 0);
             }
             System.out.println("\nХотите повторить игру? [yes/no]:");
             choice = scanner.nextLine();
