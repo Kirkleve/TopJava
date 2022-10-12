@@ -26,9 +26,9 @@ public class ArrayTheme {
         for (int i = 1; i < length - 1; i++) {
             mult *= intArray[i];
             System.out.print(i);
-            System.out.print(i != length -2 ? " * ": "");
+            System.out.print(i != length - 2 ? " * " : "");
         }
-        System.out.print(" = " + mult + "\n" + "0[" + intArray[0] + "]; " + "9[" + intArray[length-1] + "]\n");
+        System.out.print(" = " + mult + "\n" + "0[" + intArray[0] + "]; " + "9[" + intArray[length - 1] + "]\n");
 
         System.out.println("\n\n№3 Удаление элементов массива");
         double[] doubleArray = new double[15];
@@ -51,12 +51,12 @@ public class ArrayTheme {
         char startAlf = 'A';
         char endAlf = 'Z';
         char[] charArray = new char[endAlf - startAlf];
-        StringBuilder printCharArray = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < charArray.length; i++) {
             charArray[i] = endAlf--;
         }
         for (char letter : charArray) {
-            System.out.println(printCharArray.append(letter));
+            System.out.println(sb.append(letter));
         }
 
         System.out.println("\n№5 Генерация уникальных чисел");
@@ -93,20 +93,28 @@ public class ArrayTheme {
         String[] srcStrArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         System.out.println("Начальный массив:\n" + Arrays.toString(srcStrArray));
         length = 0;
-        for (int i = 0; i < srcStrArray.length; i++) {
-            if (srcStrArray[i].isBlank()) {
-                length++;
-                for (int j = i + 1; j < srcStrArray.length; j++) {
-                    srcStrArray[j - 1] = srcStrArray[j];
-                }
-            }
+        for (String str : srcStrArray) {
+            if (!str.isBlank()) length++;
         }
         String[] destStrArray = new String[length];
+        int destPos = 0;
+        count = 0;
+        for (int i = 0; i < srcStrArray.length; i++) {
+            if (!srcStrArray[i].isBlank()) {
+                count++;
+            } else {
+                if (count > 0) {
+                    System.arraycopy(srcStrArray, i - count, destStrArray, destPos, count);
+                    destPos += count;
+                }
+                count = 0;
+            }
+        }
         System.out.println("Длинна массива без пустых строк:\n" + length);
-        System.arraycopy(srcStrArray, 0, destStrArray, 0, length);
         System.out.println("Новый копированный массив:\n" + Arrays.toString(destStrArray));
     }
-    public static void printArray(double[] array){
+
+    public static void printArray(double[] array) {
         Random random = new Random();
         for (int i = 0; i < array.length; i++) {
             array[i] = random.nextDouble();
