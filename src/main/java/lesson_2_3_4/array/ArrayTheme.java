@@ -100,9 +100,8 @@ public class ArrayTheme {
         int destPos = 0;
         count = 0;
         for (int i = 0; i < srcStrArray.length; i++) {
-            if (!srcStrArray[i].isBlank()) {
-                count++;
-            } else {
+            if (!srcStrArray[i].isBlank()) count++;
+            else {
                 if (count > 0) {
                     System.arraycopy(srcStrArray, i - count, destStrArray, destPos, count);
                     destPos += count;
@@ -113,7 +112,6 @@ public class ArrayTheme {
         System.out.println("Длинна массива без пустых строк:\n" + length);
         System.out.println("Новый копированный массив:\n" + Arrays.toString(destStrArray));
     }
-
     public static void printArray(double[] array) {
         Random random = new Random();
         for (int i = 0; i < array.length; i++) {
