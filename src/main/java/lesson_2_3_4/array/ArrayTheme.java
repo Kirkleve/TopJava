@@ -37,7 +37,7 @@ public class ArrayTheme {
         for (int i = 0; i < length; i++) {
             doubleArray[i] = random.nextDouble();
         }
-        System.out.println("Исходный массив: ");
+        System.out.println("Исходный массив:");
         printArray(doubleArray);
         double middleNum = doubleArray[length / 2];
         int count = 0;
@@ -47,7 +47,7 @@ public class ArrayTheme {
                 count++;
             }
         }
-        System.out.println("\nИзменённый массив: ");
+        System.out.println("\nИзменённый массив:");
         printArray(doubleArray);
         System.out.println("\nКоличество изменённых ячеек = " + count);
 
