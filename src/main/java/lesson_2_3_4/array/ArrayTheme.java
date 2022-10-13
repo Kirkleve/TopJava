@@ -9,10 +9,10 @@ public class ArrayTheme {
         int[] intArray = {2, 4, 5, 6, 1, 3, 7};
         System.out.println(Arrays.toString(intArray).replace(",", ""));
         int length = intArray.length;
-        for (int i = 0; i < length / 2; i++) {
-            int temp = intArray[length - i - 1];
-            intArray[length - i - 1] = intArray[i];
-            intArray[i] = temp;
+        for (int i = 0; i <= length / 2; i++) {
+            int temp = intArray[i];
+            intArray[i] = intArray[--length];
+            intArray[length] = temp;
         }
         System.out.println(Arrays.toString(intArray).replace(",", ""));
 
@@ -25,14 +25,18 @@ public class ArrayTheme {
         int mult = 1;
         for (int i = 1; i < length - 1; i++) {
             mult *= intArray[i];
-            System.out.print(i);
-            System.out.print(i != length - 2 ? " * " : "");
+            System.out.print(i + (i != length - 2 ? " * " : "") +
+                    (i == length - 2 ? " = " + mult + "\n" : ""));
         }
-        System.out.print(" = " + mult + "\n" + "0[" + intArray[0] + "]; " + "9[" + intArray[length - 1] + "]\n");
+        System.out.println("0[" + intArray[0] + "]; " + "9[" + intArray[length - 1] + "]");
 
-        System.out.println("\n\n№3 Удаление элементов массива");
+        System.out.println("\n№3 Удаление элементов массива");
+        Random random = new Random();
         double[] doubleArray = new double[15];
         length = doubleArray.length;
+        for (int i = 0; i < length; i++) {
+            doubleArray[i] = random.nextDouble();
+        }
         System.out.println("Исходный массив: ");
         printArray(doubleArray);
         double middleNum = doubleArray[length / 2];
@@ -48,15 +52,14 @@ public class ArrayTheme {
         System.out.println("\nКоличество изменённых ячеек = " + count);
 
         System.out.println("\n№4 Вывод элементов массива лесенкой в обратном порядке");
-        char startAlf = 'A';
-        char endAlf = 'Z';
-        char[] charArray = new char[endAlf - startAlf];
+        char[] charArray = new char[('Z' - 'A') + 1];
+        length = charArray.length;
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < charArray.length; i++) {
-            charArray[i] = endAlf--;
+        for (int i = 0; i < length; i++) {
+            charArray[i] = (char) ('A' + i);
         }
-        for (char letter : charArray) {
-            System.out.println(sb.append(letter));
+        for (int i = length - 1; i >= 0 ; i--) {
+            System.out.println(sb.append(charArray[i]));
         }
 
         System.out.println("\n№5 Генерация уникальных чисел");
@@ -101,21 +104,18 @@ public class ArrayTheme {
         count = 0;
         for (int i = 0; i < srcStrArray.length; i++) {
             if (!srcStrArray[i].isBlank()) count++;
-            else {
-                if (count > 0) {
-                    System.arraycopy(srcStrArray, i - count, destStrArray, destPos, count);
-                    destPos += count;
-                }
+            else if (count > 0) {
+                System.arraycopy(srcStrArray, i - count, destStrArray, destPos, count);
+                destPos += count;
                 count = 0;
             }
         }
         System.out.println("Длинна массива без пустых строк:\n" + length);
         System.out.println("Новый копированный массив:\n" + Arrays.toString(destStrArray));
     }
+
     public static void printArray(double[] array) {
-        Random random = new Random();
         for (int i = 0; i < array.length; i++) {
-            array[i] = random.nextDouble();
             System.out.printf("%6.3f ", array[i]);
             if (i == 7)
                 System.out.println();
