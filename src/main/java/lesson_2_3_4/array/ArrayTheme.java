@@ -25,10 +25,9 @@ public class ArrayTheme {
         int mult = 1;
         for (int i = 1; i < length - 1; i++) {
             mult *= intArray[i];
-            System.out.print(i + (i != length - 2 ? " * " : "") +
-                    (i == length - 2 ? " = " + mult + "\n" : ""));
+            System.out.print(i + (i != length - 2 ? " * " : (" = " + mult)));
         }
-        System.out.println("0[" + intArray[0] + "]; " + "9[" + intArray[length - 1] + "]");
+        System.out.println("\n0[" + intArray[0] + "]; " + "9[" + intArray[length - 1] + "]");
 
         System.out.println("\n№3 Удаление элементов массива");
         Random random = new Random();
