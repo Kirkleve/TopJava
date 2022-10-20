@@ -1,8 +1,11 @@
 package lesson_2_3_4.guess;
 
+import java.util.Arrays;
+
 public class Player {
     private final String name;
-    private int[] number = new int[10];
+    private int[] numbers = new int[10];
+    private int count;
 
     public Player(String name) {
         this.name = name;
@@ -12,11 +15,19 @@ public class Player {
         return name;
     }
 
-    public void setNumber(int number, int count) {
-        this.number[count] = number;
+    public void addNumber(int number, int count) {
+        this.numbers[count] = number;
     }
 
-    public int[] getNumber() {
-        return number;
+    public int[] getNumbers() {
+        return Arrays.copyOf(numbers, numbers.length);
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

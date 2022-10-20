@@ -7,80 +7,75 @@ public class GuessNumber {
     private Player player1;
     private Player player2;
     private int secretNum;
-    private int countPlayer1;
-    private int countPlayer2;
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = new Player(player1.getName());
         this.player2 = new Player(player2.getName());
     }
 
-    public int getCountPlayer1() {
-        return countPlayer1;
-    }
-
-    public int getCountPlayer2() {
-        return countPlayer2;
-    }
-
-    public void setCountPlayer1(int countPlayer1) {
-        this.countPlayer1 = countPlayer1;
-    }
-
-    public void setCountPlayer2(int countPlayer2) {
-        this.countPlayer2 = countPlayer2;
+    private void removeNumbers() {
+        Arrays.fill(player1.getNumbers(),0, player1.getCount(), 0);
+        Arrays.fill(player2.getNumbers(),0, player2.getCount(), 0);
+        player1.setCount(0);
+        player2.setCount(0);
     }
 
     public void start() {
         System.out.println("Компьютер загадал число, попробуйте его отгадать,\n" +
                 "тот кто отгадал число первым побеждает, ход первого игрока определяется случайно.\n" +
                 "У каждого игрока всего 10 попыток!");
-        generateRandomNumber();
+        generateSecretNumber();
         int randomPlayer = 1 + (int) (Math.random() * 2);
         if (randomPlayer == 2) {
             Player temp = player2;
             player2 = player1;
             player1 = temp;
         }
-        countPlayer1 = 0;
-        countPlayer2 = 0;
         while (true) {
-            if (makeMove(player1, countPlayer1++)) {
+            player1.setCount(player1.getCount() + 1);
+            player2.setCount(player2.getCount() + 1);
+            if (makeMove(player1)) {
                 break;
             }
-            if (makeMove(player2, countPlayer2++)) {
+            if (makeMove(player2)) {
                 break;
             }
-            if (countPlayer1 == 10 && countPlayer2 == 10) {
+            if (player1.getCount() == 10 && player2.getCount() == 10) {
                 System.out.println("Ха Ха компьютер победил)");
+                removeNumbers();
                 break;
             }
         }
     }
 
-    private void generateRandomNumber() {
+    private void generateSecretNumber() {
         secretNum = (int) ((Math.random() * 100) + 1);
     }
 
-    private boolean makeMove(Player player, int count) {
-        System.out.printf("%d попытка %s угадай число:%n",count + 1, player.getName());
+    private void printNumbersPlayer(Player player) {
+        System.out.println("Числа которые игрок " + player.getName() + " называл:");
+        int[] copyNumber = Arrays.copyOf(player.getNumbers(), player.getCount() + 1);
+        for (int i = 1; i < copyNumber.length; i++) {
+            System.out.print(copyNumber[i] + " ");
+        }
+    }
+
+    private boolean makeMove(Player player) {
+        System.out.printf("%d попытка %s угадай число:%n",player.getCount(), player.getName());
         int number = new Scanner(System.in).nextInt();
-        player.setNumber(number, count);
+        player.addNumber(number, player.getCount());
         if (number == secretNum) {
             System.out.printf("Поздравляю игрок %s угадал число %d с %d попытки%n",
-                    player.getName(), secretNum, count);
-            System.out.println("Числа которые игрок " + player.getName() + " называл:");
-            int[] copyNumber = Arrays.copyOf(player.getNumber(), count + 1);
-            for (int arr: copyNumber) {
-                System.out.print(arr + " ");
-            }
+                    player.getName(), secretNum, player.getCount());
+            printNumbersPlayer(player);
+            removeNumbers();
             return true;
         }
         if (number > secretNum)
             System.out.println("Число больше загаданного");
         else
             System.out.println("Число меньше загаданного");
-        if (count == 9)
+        if (player.getCount() == 9)
             System.out.printf("У игрока %s закончились попытки\n", player.getName());
         return false;
     }
