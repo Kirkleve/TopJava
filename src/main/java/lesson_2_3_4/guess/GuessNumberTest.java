@@ -18,7 +18,7 @@ public class GuessNumberTest {
             if (choice.equals("yes")) {
                 game.start();
             }
-            System.out.println("\nХотите повторить игру? [yes/no]:");
+            System.out.println("Хотите повторить игру? [yes/no]:");
             choice = scanner.nextLine();
         }
         System.out.println("До новых встреч!");

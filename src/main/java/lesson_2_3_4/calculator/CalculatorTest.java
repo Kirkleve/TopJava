@@ -9,15 +9,16 @@ public class CalculatorTest {
         while (!choice.equals("no")) {
             if (choice.equals("yes")) {
                 System.out.println("Введите математическую операцию, в формате 2 + 2");
-                String mathExpression = scanner.nextLine();
-                int calculate = Calculator.calculate(mathExpression);
-                if (calculate == 0) {
-                    System.out.println("Попробуйте снова");
-                } else {
-                    System.out.println(mathExpression + " = " + calculate);
+                try {
+                    String mathExpression = scanner.nextLine();
+                    System.out.println(mathExpression + " = " + Calculator.calculate(mathExpression));
+                } catch (NumberFormatException e) {
+                    System.out.println("Только целое, не отрицательное число, не забываем пробелы и ни каких букв!");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
             }
-            System.out.println("Хотите продолжить вычисления? [yes/no]:");
+            System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             choice = scanner.nextLine();
         }
         System.out.println("Прощайте! Рад был помочь.");

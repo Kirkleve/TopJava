@@ -15,12 +15,13 @@ public class Player {
         return name;
     }
 
-    public void addNumber(int number, int count) {
-        this.numbers[count] = number;
+    public void addNumber(int number) {
+        numbers[count] = number;
+        count++;
     }
 
     public int[] getNumbers() {
-        return Arrays.copyOf(numbers, numbers.length);
+        return Arrays.copyOf(numbers, count);
     }
 
     public int getCount() {
@@ -29,5 +30,10 @@ public class Player {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public void removeNumbers() {
+        Arrays.fill(numbers, 0, count, 0);
+        count = 0;
     }
 }
