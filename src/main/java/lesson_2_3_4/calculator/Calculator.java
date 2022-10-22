@@ -5,11 +5,9 @@ public class Calculator {
     private static int number2;
     private static char mathSign;
 
-    public static int calculate(String mathExpression) throws Exception {
+    public static int calculate(String mathExpression) {
         parseExpression(mathExpression);
-        if (mathSign == 0 || number1 == -1 || number2 == -1) {
-            return -1;
-        } else return switch (mathSign) {
+        return switch (mathSign) {
             case '+' -> Math.addExact(number1, number2);
             case '-' -> Math.subtractExact(number1, number2);
             case '*' -> Math.multiplyExact(number1, number2);
@@ -20,24 +18,26 @@ public class Calculator {
         };
     }
 
-    private static void parseExpression(String mathExpression) throws Exception {
+    private static void parseExpression(String mathExpression) {
         String[] partsExpression = mathExpression.split(" ");
         number1 = checkNumber(Integer.parseInt(partsExpression[0]));
         mathSign = checkMathSing(partsExpression[1]);
         number2 = checkNumber(Integer.parseInt(partsExpression[2]));
     }
 
-    private static int checkNumber(int number) throws Exception {
+    private static int checkNumber(int number) {
         if (number < 0) {
-            throw new Exception("Отрицательное число использовать нельзя!");
-        } else return number;
+            throw new RuntimeException("Отрицательное число использовать нельзя!");
+        }
+        return number;
     }
 
-    private static char checkMathSing(String str) throws Exception {
+    private static char checkMathSing(String str) {
         char mathSign = str.charAt(0);
         if (mathSign != '+' && mathSign != '-' && mathSign != '*' && mathSign != '/'
                 && mathSign != '^' && mathSign != '%') {
-            throw new Exception("Неверный математический символ, введите только символ + - * / ^ %");
-        } else return mathSign;
+            throw new RuntimeException("Неверный математический символ, введите только символ + - * / ^ %");
+        }
+        return mathSign;
     }
 }

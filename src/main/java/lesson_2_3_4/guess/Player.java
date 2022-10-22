@@ -28,11 +28,7 @@ public class Player {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public void removeNumbers() {
+    public void clear() {
         Arrays.fill(numbers, 0, count, 0);
         count = 0;
     }

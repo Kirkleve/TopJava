@@ -18,27 +18,29 @@ public class GuessNumber {
                 "тот кто отгадал число первым побеждает, ход первого игрока определяется случайно.\n" +
                 "У каждого игрока всего 10 попыток!");
         generateSecretNumber();
-        randomPlayerFirstMove();
+        castLots();
+        int count = 1;
         while (true) {
-            player1.setCount(player1.getCount());
-            player2.setCount(player2.getCount());
             if (makeMove(player1) || makeMove(player2)) {
                 break;
             }
-            if (player1.getCount() == 10 && player2.getCount() == 10) {
+            if (count == 10) {
                 System.out.println("Ха Ха компьютер победил)");
-                player1.removeNumbers();
-                player2.removeNumbers();
                 break;
             }
+            count++;
         }
+        printPlayerNumbers(player1);
+        printPlayerNumbers(player2);
+        player1.clear();
+        player2.clear();
     }
 
     private void generateSecretNumber() {
         secretNumber = (int) ((Math.random() * 100) + 1);
     }
 
-    private void randomPlayerFirstMove() {
+    private void castLots() {
         int randomPlayer = 1 + (int) (Math.random() * 2);
         if (randomPlayer == 2) {
             Player temp = player2;
@@ -48,16 +50,12 @@ public class GuessNumber {
     }
 
     private boolean makeMove(Player player) {
-        System.out.printf("%d попытка %s угадай число:%n",player.getCount() + 1, player.getName());
+        System.out.printf("%d попытка %s угадай число:%n", player.getCount() + 1, player.getName());
         int number = new Scanner(System.in).nextInt();
         player.addNumber(number);
         if (number == secretNumber) {
             System.out.printf("Поздравляю игрок %s угадал число %d с %d попытки%n",
                     player.getName(), secretNumber, player.getCount());
-            printPlayerNumbers(player1);
-            printPlayerNumbers(player2);
-            player1.removeNumbers();
-            player2.removeNumbers();
             return true;
         }
         if (number > secretNumber)

@@ -13,8 +13,9 @@ public class CalculatorTest {
                     String mathExpression = scanner.nextLine();
                     System.out.println(mathExpression + " = " + Calculator.calculate(mathExpression));
                 } catch (NumberFormatException e) {
-                    System.out.println("Только целое, не отрицательное число, не забываем пробелы и ни каких букв!");
-                } catch (Exception e) {
+                    System.out.println("Только целое, не отрицательное число, не забываем " +
+                            "пробелы и ни каких букв!");
+                } catch (RuntimeException e) {
                     System.out.println(e.getMessage());
                 }
             }
