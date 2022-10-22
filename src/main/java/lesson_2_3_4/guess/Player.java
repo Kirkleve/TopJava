@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Player {
     private final String name;
-    private int[] numbers = new int[10];
+    private final int[] numbers = new int[10];
     private int count;
 
     public Player(String name) {
@@ -16,8 +16,12 @@ public class Player {
     }
 
     public void addNumber(int number) {
-        numbers[count] = number;
-        count++;
+        if (number <= 100 && 0 < number) {
+            numbers[count] = number;
+            count++;
+        } else
+            System.out.println("Вы ввели число " + (number > 100 ? "больше 100" : "меньше 0") +
+                    ", можно вводить числа от 0 до 100\nПопробуйте ещё раз!");
     }
 
     public int[] getNumbers() {

@@ -51,17 +51,17 @@ public class GuessNumber {
 
     private boolean makeMove(Player player) {
         System.out.printf("%d попытка %s угадай число:%n", player.getCount() + 1, player.getName());
-        int number = new Scanner(System.in).nextInt();
-        player.addNumber(number);
+        int number;
+        do {
+            number = new Scanner(System.in).nextInt();
+            player.addNumber(number);
+        } while (number > 100);
         if (number == secretNumber) {
             System.out.printf("Поздравляю игрок %s угадал число %d с %d попытки%n",
                     player.getName(), secretNumber, player.getCount());
             return true;
         }
-        if (number > secretNumber)
-            System.out.println("Число больше загаданного");
-        else
-            System.out.println("Число меньше загаданного");
+        System.out.println("Число " + (number > secretNumber ? "больше" : "меньше") + " загаданного");
         if (player.getCount() == 9)
             System.out.printf("У игрока %s закончились попытки\n", player.getName());
         return false;
