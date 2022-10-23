@@ -1,5 +1,7 @@
 package lesson_2_3_4.calculator;
 
+import com.sun.jdi.NativeMethodException;
+
 public class Calculator {
     private static int number1;
     private static int number2;
@@ -27,7 +29,7 @@ public class Calculator {
 
     private static int checkNumber(int number) {
         if (number < 0) {
-            throw new RuntimeException("Отрицательное число использовать нельзя!");
+            throw new NativeMethodException("Отрицательное число использовать нельзя!");
         }
         return number;
     }
@@ -36,7 +38,7 @@ public class Calculator {
         char mathSign = str.charAt(0);
         if (mathSign != '+' && mathSign != '-' && mathSign != '*' && mathSign != '/'
                 && mathSign != '^' && mathSign != '%') {
-            throw new RuntimeException("Неверный математический символ, введите только символ + - * / ^ %");
+            throw new ArithmeticException("Неверный математический символ, введите только символ + - * / ^ %");
         }
         return mathSign;
     }

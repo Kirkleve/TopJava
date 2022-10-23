@@ -1,5 +1,7 @@
 package lesson_2_3_4.calculator;
 
+import com.sun.jdi.NativeMethodException;
+
 import java.util.Scanner;
 
 public class CalculatorTest {
@@ -15,7 +17,7 @@ public class CalculatorTest {
                 } catch (NumberFormatException e) {
                     System.out.println("Только целое, не отрицательное число, не забываем " +
                             "пробелы и ни каких букв!");
-                } catch (RuntimeException e) {
+                } catch (NativeMethodException | ArithmeticException e) {
                     System.out.println(e.getMessage());
                 }
             }
