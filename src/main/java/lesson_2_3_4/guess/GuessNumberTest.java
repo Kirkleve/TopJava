@@ -12,7 +12,12 @@ public class GuessNumberTest {
         System.out.print("Введите имя второго игрока: ");
         String name2 = scanner.nextLine();
         Player player2 = new Player(name2);
-        GuessNumber game = new GuessNumber(player1, player2);
+        System.out.print("Введите имя третьего игрока: ");
+        String name3 = scanner.nextLine();
+        Player player3 = new Player(name3);
+        System.out.print("Сколько раундов вы хотите?: ");
+        int round = scanner.nextInt();
+        GuessNumber game = new GuessNumber(round ,player1, player2, player3);
         String choice = "yes";
         while (!choice.equals("no")) {
             if (choice.equals("yes")) {
