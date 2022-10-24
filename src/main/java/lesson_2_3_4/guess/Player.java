@@ -16,13 +16,16 @@ public class Player {
         return name;
     }
 
-    public void addNumber(int number) {
+    public boolean addNumber(int number) {
         if (number <= 100 && 0 < number) {
             numbers[count] = number;
             count++;
-        } else
+            return false;
+        } else {
             System.out.println("Вы ввели число " + (number > 100 ? "больше 100" : "меньше 1") +
                     ", можно вводить числа от 1 до 100\nПопробуйте ещё раз!");
+            return true;
+        }
     }
 
     public int[] getNumbers() {
@@ -38,7 +41,7 @@ public class Player {
     }
 
     public void countRoundWin() {
-        this.countRoundWin++;
+        countRoundWin++;
     }
 
     public void clear() {

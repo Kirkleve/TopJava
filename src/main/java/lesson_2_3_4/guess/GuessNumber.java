@@ -5,20 +5,20 @@ import java.util.Scanner;
 public class GuessNumber {
     private final Player[] players;
     private int secretNumber;
-    private final int round;
+    private final int ROUND_LIMIT;
 
-    public GuessNumber(int round, Player... player) {
-        this.round = round;
+    public GuessNumber(int ROUND_LIMIT, Player... player) {
+        this.ROUND_LIMIT = ROUND_LIMIT;
         this.players = player;
     }
 
     public void start() {
         System.out.println("Компьютер загадал число, попробуйте его отгадать,\n" +
                 "тот кто отгадал число первым побеждает, ход первого игрока определяется случайно.\n" +
-                "У каждого игрока всего 10 попыток! И у вас " + round + " раунд(а)");
+                "У каждого игрока всего 10 попыток! И у вас " + ROUND_LIMIT + " раунд(а)");
         int countAttempts = 1;
         int countRound = 1;
-        while (countRound <= round) {
+        while (countRound <= ROUND_LIMIT) {
             System.out.println(countRound + " раунд");
             generateSecretNumber();
             castLots();
@@ -32,13 +32,10 @@ public class GuessNumber {
                 }
                 countAttempts++;
             }
-            for (Player pl : players) {
-                printPlayerNumbers(pl);
-                pl.clear();
-            }
+            printPlayersNumbers();
             countRound++;
         }
-        winner();
+        findWinner();
     }
 
     private void generateSecretNumber() {
@@ -46,22 +43,22 @@ public class GuessNumber {
     }
 
     private void castLots() {
-        for (int i = players.length - 1; 0 < i; i--) {
-            int randomPlayer = (int) (Math.random() * players.length);
-            Player temp = players[randomPlayer];
-            players[randomPlayer] = players[i];
+        for (int i = players.length - 1; i > 0 ; i--) {
+            int position = (int) (Math.random() * i);
+            Player temp = players[position];
+            players[position] = players[i];
             players[i] = temp;
         }
     }
 
     private boolean makeMove(Player... players) {
+        Scanner scanner = new Scanner(System.in);
         for (Player player : players) {
             System.out.printf("%d попытка %s угадай число:%n", player.getCount() + 1, player.getName());
             int number;
             do {
-                number = new Scanner(System.in).nextInt();
-                player.addNumber(number);
-            } while (number > 100 && number <= 0);//не понимаю как исправить исправление
+                number = scanner.nextInt();
+            } while (player.addNumber(number));
             if (number == secretNumber) {
                 System.out.printf("Поздравляю игрок %s угадал число %d с %d попытки%n",
                         player.getName(), secretNumber, player.getCount());
@@ -76,16 +73,20 @@ public class GuessNumber {
         return false;
     }
 
-    private void printPlayerNumbers(Player player) {
-        System.out.println("Числа которые игрок " + player.getName() + " называл:");
-        int[] copyNumber = player.getNumbers();
-        for (int numbers : copyNumber) {
-            System.out.print(numbers + " ");
+    private void printPlayersNumbers() {
+        int[] copyNumbers;
+        for (Player player : players) {
+            System.out.println("Числа которые игрок " + player.getName() + " называл:");
+            copyNumbers = player.getNumbers();
+            for (int number : copyNumbers) {
+                System.out.print(number + " ");
+            }
+            System.out.println();
+            player.clear();
         }
-        System.out.println();
     }
 
-    private void winner() {
+    private void findWinner() {
         for (int i = 0; i < players.length - 1; i++) {
             for (int j = 0; j < players.length - i - 1; j++) {
                 if (players[j + 1].getCountRoundWin() > players[j].getCountRoundWin()) {
@@ -100,7 +101,7 @@ public class GuessNumber {
             if (players[0].getCountRoundWin() == players[i].getCountRoundWin())
                 winner.append(" ").append(players[i].getName());
         }
-        System.out.println("И побеждает в " + round + " раундах: " +
+        System.out.println("И побеждает в " + ROUND_LIMIT + " раундах: " +
                 winner + "!\nУра Ура Ура!");
     }
 }
