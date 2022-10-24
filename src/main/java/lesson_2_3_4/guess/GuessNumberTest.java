@@ -7,8 +7,7 @@ public class GuessNumberTest {
         System.out.println("Угадай число");
         System.out.print("Сколько раундов вы хотите?: ");
         Scanner scanner = new Scanner(System.in);
-        int round = scanner.nextInt();
-        GuessNumber game = new GuessNumber(round, namePlayer(1),
+        GuessNumber game = new GuessNumber(scanner.nextInt(), namePlayer(1),
                 namePlayer(2), namePlayer(3));
         String choice = "yes";
         while (!choice.equals("no")) {
