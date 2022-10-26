@@ -7,26 +7,31 @@ public class BookshelfTest {
         System.out.println("Вас приветствует книжный шкаф, здесь вы можете хранить свои книги!");
         Scanner scanner = new Scanner(System.in);
         Bookshelf bookshelf = new Bookshelf();
-        int actionNumber = 0;
-        while (actionNumber != 5) {
+        int actionNumber;
+        boolean action = true;
+        while (action) {
             menu();
             actionNumber = scanner.nextInt();
-            if (actionNumber > 0 && actionNumber < 5) {
-                switch (actionNumber) {
-                    case 1 -> bookshelf.printBook();
-                    case 2 -> addBook(bookshelf);
-                    case 3 -> deleteBook(bookshelf);
-                    case 4 -> {
-                        bookshelf.clear();
-                        System.out.println("Все книги с полок сметены.");
-                    }
+            switch (actionNumber) {
+                case 1 -> bookshelf.printBook();
+                case 2 -> addBook(bookshelf);
+                case 3 -> deleteBook(bookshelf);
+                case 4 -> {
+                    bookshelf.clear();
+                    System.out.println("Все книги с полок сметены.");
                 }
-                System.out.print("Для продолжения работы нажмите Enter ");
+                case 5 -> {
+                    System.out.println("До новых встреч.");
+                    action = false;
+                }
+            }
+            if (actionNumber > 0 && actionNumber < 5) {
+                System.out.print("Для продолжения работы нажмите Enter");
                 scanner.nextLine();
                 scanner.nextLine();
-            } else if (actionNumber == 5)
-                System.out.println("До новых встреч.");
+            }
         }
+        scanner.close();
     }
 
     public static void menu() {
