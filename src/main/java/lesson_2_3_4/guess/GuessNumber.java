@@ -22,10 +22,7 @@ public class GuessNumber {
             System.out.println(countRound + " раунд");
             generateSecretNumber();
             castLots();
-            while (true) {
-                if (makeMove(players)) {
-                    break;
-                }
+            while (makeMove(players)) {
                 if (countAttempts == 10) {
                     System.out.println("Ха Ха компьютер победил)");
                     break;
@@ -43,7 +40,7 @@ public class GuessNumber {
     }
 
     private void castLots() {
-        for (int i = players.length - 1; i > 0 ; i--) {
+        for (int i = players.length - 1; i > 0; i--) {
             int position = (int) (Math.random() * i);
             Player temp = players[position];
             players[position] = players[i];
@@ -53,32 +50,36 @@ public class GuessNumber {
 
     private boolean makeMove(Player... players) {
         Scanner scanner = new Scanner(System.in);
+        int count;
+        String namePlayer;
         for (Player player : players) {
-            System.out.printf("%d попытка %s угадай число:%n", player.getCount() + 1, player.getName());
-            int number;
-            do {
+            count = player.getcount();
+            namePlayer = player.getName();
+            System.out.printf("%d попытка %s угадай число:%n", count + 1, namePlayer);
+            int number = scanner.nextInt();
+            while (player.addNumber(number)) {
+                System.out.println("Вы ввели число " + (number > 100 ? "больше 100" : "меньше 1") +
+                        ", можно вводить числа от 1 до 100\nПопробуйте ещё раз!");
                 number = scanner.nextInt();
-            } while (player.addNumber(number));
+            }
             if (number == secretNumber) {
                 System.out.printf("Поздравляю игрок %s угадал число %d с %d попытки%n",
-                        player.getName(), secretNumber, player.getCount());
+                        namePlayer, secretNumber, count);
                 player.countRoundWin();
                 return true;
             }
             System.out.println("Число " + (number > secretNumber ? "больше" : "меньше") + " загаданного");
-            if (player.getCount() == 9) {
-                System.out.printf("У игрока %s закончились попытки\n", player.getName());
+            if (count == 9) {
+                System.out.printf("У игрока %s закончились попытки\n", namePlayer);
             }
         }
         return false;
     }
 
     private void printPlayersNumbers() {
-        int[] copyNumbers;
         for (Player player : players) {
             System.out.println("Числа которые игрок " + player.getName() + " называл:");
-            copyNumbers = player.getNumbers();
-            for (int number : copyNumbers) {
+            for (int number : player.getNumbers()) {
                 System.out.print(number + " ");
             }
             System.out.println();
@@ -89,7 +90,7 @@ public class GuessNumber {
     private void findWinner() {
         for (int i = 0; i < players.length - 1; i++) {
             for (int j = 0; j < players.length - i - 1; j++) {
-                if (players[j + 1].getCountRoundWin() > players[j].getCountRoundWin()) {
+                if (players[j + 1].getIncCountRoundWin() > players[j].getIncCountRoundWin()) {
                     Player temp = players[j];
                     players[j] = players[j + 1];
                     players[j + 1] = temp;
@@ -98,7 +99,7 @@ public class GuessNumber {
         }
         StringBuilder winner = new StringBuilder(players[0].getName());
         for (int i = 1; i < players.length; i++) {
-            if (players[0].getCountRoundWin() == players[i].getCountRoundWin())
+            if (players[0].getIncCountRoundWin() == players[i].getIncCountRoundWin())
                 winner.append(" ").append(players[i].getName());
         }
         System.out.println("И побеждает в " + ROUND_LIMIT + " раундах: " +

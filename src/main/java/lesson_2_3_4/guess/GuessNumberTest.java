@@ -5,10 +5,12 @@ import java.util.Scanner;
 public class GuessNumberTest {
     public static void main(String[] args) {
         System.out.println("Угадай число");
-        System.out.print("Сколько раундов вы хотите?: ");
+        System.out.print("Сколько игроков будет?: ");
         Scanner scanner = new Scanner(System.in);
-        GuessNumber game = new GuessNumber(scanner.nextInt(), namePlayer(1),
-                namePlayer(2), namePlayer(3));
+        int countPlayers = scanner.nextInt();
+        Player[] players = createPlayers(countPlayers);
+        System.out.print("Сколько раундов вы хотите?: ");
+        GuessNumber game = new GuessNumber(scanner.nextInt(), players);
         String choice = "yes";
         while (!choice.equals("no")) {
             if (choice.equals("yes")) {
@@ -21,10 +23,15 @@ public class GuessNumberTest {
         System.out.println("До новых встреч!");
     }
 
-    public static Player namePlayer(int countPlayer){
+    public static Player[] createPlayers(int countPlayers) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите имя " + countPlayer + " игрока: ");
-        String name = scanner.nextLine();
-        return new Player(name);
+        Player[] players = new Player[countPlayers];
+        int count = 1;
+        for (int i = 0; i < countPlayers; i++) {
+            System.out.print("Введите имя " + count + " игрока: ");
+            players[i] = new Player(scanner.nextLine());
+            count++;
+        }
+        return players;
     }
 }

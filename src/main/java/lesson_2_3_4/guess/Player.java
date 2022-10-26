@@ -6,7 +6,7 @@ public class Player {
     private final String name;
     private final int[] numbers = new int[10];
     private int count;
-    private int countRoundWin;
+    private int incCountRoundWin;
 
     public Player(String name) {
         this.name = name;
@@ -21,27 +21,24 @@ public class Player {
             numbers[count] = number;
             count++;
             return false;
-        } else {
-            System.out.println("Вы ввели число " + (number > 100 ? "больше 100" : "меньше 1") +
-                    ", можно вводить числа от 1 до 100\nПопробуйте ещё раз!");
-            return true;
         }
+        return true;
     }
 
     public int[] getNumbers() {
         return Arrays.copyOf(numbers, count);
     }
 
-    public int getCount() {
+    public int getcount() {
         return count;
     }
 
-    public int getCountRoundWin() {
-        return countRoundWin;
+    public int getIncCountRoundWin() {
+        return incCountRoundWin;
     }
 
     public void countRoundWin() {
-        countRoundWin++;
+        incCountRoundWin++;
     }
 
     public void clear() {
