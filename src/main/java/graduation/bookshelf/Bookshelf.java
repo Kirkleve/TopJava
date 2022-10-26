@@ -24,7 +24,7 @@ public class Bookshelf {
     public boolean deleteBook(String nameBook) {
         for (int i = 0; i < books.size(); i++) {
             if (nameBook.equals(books.get(i).getTitle())) {
-                books.remove(i);
+                books.remove(books.get(i));
                 return true;
             }
         }

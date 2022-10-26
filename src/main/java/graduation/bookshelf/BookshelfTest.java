@@ -7,12 +7,11 @@ public class BookshelfTest {
         System.out.println("Вас приветствует книжный шкаф, здесь вы можете хранить свои книги!");
         Scanner scanner = new Scanner(System.in);
         Bookshelf bookshelf = new Bookshelf();
-        int actionNumber;
-        boolean action = true;
-        while (action) {
-            menu();
-            actionNumber = scanner.nextInt();
-            switch (actionNumber) {
+        while (true) {
+            outMenu();
+            int menuItem = scanner.nextInt();
+            System.out.println();
+            switch (menuItem) {
                 case 1 -> bookshelf.printBook();
                 case 2 -> addBook(bookshelf);
                 case 3 -> deleteBook(bookshelf);
@@ -22,21 +21,18 @@ public class BookshelfTest {
                 }
                 case 5 -> {
                     System.out.println("До новых встреч.");
-                    action = false;
+                    return;
                 }
                 default -> System.out.println("Неверный номер действия! Смотрите внимательнее!");
             }
-            if (action) {
-                System.out.print("Для продолжения работы нажмите Enter");
-                scanner.nextLine();
-                scanner.nextLine();
-            }
+            System.out.print("\nДля продолжения работы нажмите Enter");
+            scanner.nextLine();
+            scanner.nextLine();
         }
-        scanner.close();
     }
 
-    public static void menu() {
-        System.out.print("Меню:\n" + """
+    public static void outMenu() {
+        System.out.print("\nМеню:\n" + """
                 1.Вывести на экран все книги
                 2.Добавить книгу на полку
                 3.Убрать книгу с полки
@@ -48,13 +44,13 @@ public class BookshelfTest {
     public static void addBook(Bookshelf bookshelf) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите автора: ");
-        String authorBook = scanner.nextLine();
+        String author = scanner.nextLine();
         System.out.print("Введите название книги: ");
-        String nameBook = scanner.nextLine();
+        String name = scanner.nextLine();
         System.out.print("Введите год книги: ");
-        int yearBook = scanner.nextInt();
-        bookshelf.addOnBookshelf(new Book(authorBook, nameBook, yearBook));
-        System.out.println("Книга на полке!");
+        int year = scanner.nextInt();
+        bookshelf.addOnBookshelf(new Book(author, name, year));
+        System.out.println("\nКнига на полке!");
     }
 
     public static void deleteBook(Bookshelf bookshelf) {

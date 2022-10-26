@@ -1,13 +1,13 @@
 package graduation.bookshelf;
 
 public class Book {
-    private final String title;
     private final String author;
+    private final String title;
     private final int yearPublication;
 
-    public Book(String title, String author, int yearPublication) {
-        this.title = title;
+    public Book(String author, String title, int yearPublication) {
         this.author = author;
+        this.title = title;
         this.yearPublication = yearPublication;
     }
 
@@ -17,7 +17,7 @@ public class Book {
 
     public String toString() {
         String line = "-".repeat(40);
-        String book = title + ", " + author + ", " + yearPublication;
+        String book = author + ", " + title + ", " + yearPublication;
         return """
                 |%-40s|
                 |%s|
