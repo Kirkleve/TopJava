@@ -6,7 +6,7 @@ public class Player {
     private final String name;
     private final int[] numbers = new int[10];
     private int count;
-    private int incCountRoundWin;
+    private int countRoundWin;
 
     public Player(String name) {
         this.name = name;
@@ -29,16 +29,16 @@ public class Player {
         return Arrays.copyOf(numbers, count);
     }
 
-    public int getcount() {
+    public int getCount() {
         return count;
     }
 
-    public int getIncCountRoundWin() {
-        return incCountRoundWin;
+    public int getCountRoundWin() {
+        return countRoundWin;
     }
 
-    public void countRoundWin() {
-        incCountRoundWin++;
+    public void incCountRoundWin() {
+        countRoundWin++;
     }
 
     public void clear() {

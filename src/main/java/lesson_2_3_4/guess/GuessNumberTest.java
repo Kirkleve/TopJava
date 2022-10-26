@@ -25,11 +25,9 @@ public class GuessNumberTest {
     public static Player[] createPlayers(int countPlayers) {
         Scanner scanner = new Scanner(System.in);
         Player[] players = new Player[countPlayers];
-        int count = 1;
         for (int i = 0; i < countPlayers; i++) {
-            System.out.print("Введите имя " + count + " игрока: ");
+            System.out.print("Введите имя " + (i + 1) + " игрока: ");
             players[i] = new Player(scanner.nextLine());
-            count++;
         }
         return players;
     }
