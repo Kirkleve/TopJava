@@ -24,8 +24,9 @@ public class BookshelfTest {
                     System.out.println("До новых встреч.");
                     action = false;
                 }
+                default -> System.out.println("Неверный номер действия! Смотрите внимательнее!");
             }
-            if (actionNumber > 0 && actionNumber < 5) {
+            if (action) {
                 System.out.print("Для продолжения работы нажмите Enter");
                 scanner.nextLine();
                 scanner.nextLine();
