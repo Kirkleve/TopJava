@@ -25,8 +25,8 @@ public class BookshelfTest {
                 }
                 default -> System.out.println("Неверный номер действия! Смотрите внимательнее!");
             }
-            System.out.print("\nДля продолжения работы нажмите Enter");
             scanner.nextLine();
+            System.out.print("\nДля продолжения работы нажмите Enter");
             scanner.nextLine();
         }
     }
