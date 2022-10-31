@@ -1,20 +1,22 @@
 package graduation.bookshelf;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BookshelfTest {
+    public static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         System.out.println("Вас приветствует книжный шкаф, здесь вы можете хранить свои книги!");
-        Scanner scanner = new Scanner(System.in);
         Bookshelf bookshelf = new Bookshelf();
         while (true) {
-            outMenu();
+            displayMenu();
             int menuItem = scanner.nextInt();
             System.out.println();
             switch (menuItem) {
-                case 1 -> bookshelf.printBook();
+                case 1 -> printBook(bookshelf);
                 case 2 -> addBook(bookshelf);
-                case 3 -> deleteBook(bookshelf);
+                case 3 -> name(bookshelf);
                 case 4 -> {
                     bookshelf.clear();
                     System.out.println("Все книги с полок сметены.");
@@ -31,7 +33,7 @@ public class BookshelfTest {
         }
     }
 
-    public static void outMenu() {
+    private static void displayMenu() {
         System.out.print("\nМеню:\n" + """
                 1.Вывести на экран все книги
                 2.Добавить книгу на полку
@@ -41,23 +43,43 @@ public class BookshelfTest {
                 """.indent(2) + "Выберите номер действия: ");
     }
 
-    public static void addBook(Bookshelf bookshelf) {
-        Scanner scanner = new Scanner(System.in);
+    private static void addBook(Bookshelf bookshelf) {
+        scanner.nextLine();
         System.out.print("Введите автора: ");
         String author = scanner.nextLine();
         System.out.print("Введите название книги: ");
         String name = scanner.nextLine();
-        System.out.print("Введите год книги: ");
-        int year = scanner.nextInt();
-        bookshelf.addOnBookshelf(new Book(author, name, year));
-        System.out.println("\nКнига на полке!");
+        try {
+            System.out.print("Введите год книги: ");
+            int year = scanner.nextInt();
+            bookshelf.add(new Book(author, name, year));
+            System.out.println("\nКнига на полке!");
+        } catch (InputMismatchException e) {
+            System.out.println("Введите год цифрами! Книгу с не верными данными на полку класть нельзя!");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Недостаточно места на полке!");
+        }
     }
 
-    public static void deleteBook(Bookshelf bookshelf) {
-        Scanner scanner = new Scanner(System.in);
+    private static void name(Bookshelf bookshelf) {
+        scanner.nextLine();
         System.out.print("Введите название книги которую хотите удалить: ");
         String deleteName = scanner.nextLine();
-        System.out.println((bookshelf.deleteBook(deleteName)) ? "Книга сметена с полки!"
+        System.out.println((bookshelf.name(deleteName)) ? "Книга сметена с полки!"
                 : "Книги с таким названием в этом книжном шкафу нету!");
+    }
+
+    public static void printBook(Bookshelf bookshelf) {
+        int length = bookshelf.takeBook().length;
+        if (length == 0)
+            System.out.println("На полках ещё нету книг, но у вас есть возможность их туда положить.");
+        else {
+            System.out.println("Шкаф содержит " + length + " книг. Свободно "
+                    + bookshelf.freeShelf() + " полок." );
+            for (int i = 0; i < length; i++) {
+                System.out.print(bookshelf.takeBook()[i]);
+            }
+            System.out.printf("|%40s|\n", " ");
+        }
     }
 }
