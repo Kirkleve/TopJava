@@ -14,10 +14,10 @@ public class Bookshelf {
         return books.length - countBooks;
     }
 
-    public Book findBook(String nameBook) {
+    public Book findBook(String name) {
         Book book = null;
         for (int i = 0; i < countBooks; i++) {
-            if (nameBook.equals((books[i]).getTitle())) {
+            if (name.equals((books[i]).getTitle())) {
                 book = books[i];
             }
         }
@@ -29,9 +29,9 @@ public class Bookshelf {
         countBooks++;
     }
 
-    public boolean deleteBook(String nameBook) {
+    public boolean deleteBook(String name) {
         for (int i = 0; i < countBooks; i++) {
-            if (nameBook.equals(books[i].getTitle())) {
+            if (name.equals(books[i].getTitle())) {
                 System.arraycopy(books, i + 1, books, i, (countBooks--) - i);
                 books[countBooks] = null;
                 return true;
