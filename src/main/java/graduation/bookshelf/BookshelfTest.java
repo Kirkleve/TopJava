@@ -17,7 +17,7 @@ public class BookshelfTest {
                 case 1 -> printBooks(bookshelf);
                 case 2 -> findBook(bookshelf);
                 case 3 -> addBook(bookshelf);
-                case 4 -> name(bookshelf);
+                case 4 -> deleteBook(bookshelf);
                 case 5 -> {
                     bookshelf.clear();
                     System.out.println("Все книги с полок сметены.");
@@ -49,7 +49,7 @@ public class BookshelfTest {
         scanner.nextLine();
         System.out.println("Введите название книги которую хотите найти: ");
         String name = scanner.nextLine();
-        System.out.println((bookshelf.findBook(name) == null ? "Такой книге нету" : bookshelf.findBook(name)));
+        System.out.println((bookshelf.find(name) == null ? "Такой книги нету" : bookshelf.find(name)));
     }
 
     private static void addBook(Bookshelf bookshelf) {
@@ -68,23 +68,23 @@ public class BookshelfTest {
         }
     }
 
-    private static void name(Bookshelf bookshelf) {
+    private static void deleteBook(Bookshelf bookshelf) {
         scanner.nextLine();
         System.out.print("Введите название книги которую хотите удалить: ");
         String deleteName = scanner.nextLine();
-        System.out.println((bookshelf.deleteBook(deleteName)) ? "Книга сметена с полки!"
+        System.out.println((bookshelf.delete(deleteName)) ? "Книга сметена с полки!"
                 : "Книги с таким названием в этом книжном шкафу нету!");
     }
 
     public static void printBooks(Bookshelf bookshelf) {
-        int length = bookshelf.getAllBook().length;
+        int length = bookshelf.getLength();
         if (length == 0)
             System.out.println("На полках ещё нету книг, но у вас есть возможность их туда положить.");
         else {
             System.out.println("Шкаф содержит " + length + " книг. Свободно "
                     + bookshelf.findFreeShelf() + " полок." );
-            for (int i = 0; i < length; i++) {
-                System.out.print(bookshelf.getAllBook()[i]);
+            for (Book book: bookshelf.getAll()) {
+                System.out.print(book);
             }
             System.out.printf("|%40s|\n", " ");
         }

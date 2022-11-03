@@ -6,7 +6,7 @@ public class Bookshelf {
     private int countBooks;
     private final Book[] books = new Book[10];
 
-    public Book[] getAllBook() {
+    public Book[] getAll() {
         return Arrays.copyOf(books, countBooks);
     }
 
@@ -14,14 +14,13 @@ public class Bookshelf {
         return books.length - countBooks;
     }
 
-    public Book findBook(String name) {
-        Book book = null;
+    public Book find(String name) {
         for (int i = 0; i < countBooks; i++) {
             if (name.equals((books[i]).getTitle())) {
-                book = books[i];
+                return books[i];
             }
         }
-        return book;
+        return null;
     }
 
     public void add(Book book) {
@@ -29,7 +28,7 @@ public class Bookshelf {
         countBooks++;
     }
 
-    public boolean deleteBook(String name) {
+    public boolean delete(String name) {
         for (int i = 0; i < countBooks; i++) {
             if (name.equals(books[i].getTitle())) {
                 System.arraycopy(books, i + 1, books, i, (countBooks--) - i);
@@ -43,6 +42,10 @@ public class Bookshelf {
     public void clear() {
         Arrays.fill(books, 0, countBooks, null);
         countBooks = 0;
+    }
+
+    public int getLength() {
+        return countBooks;
     }
 }
 
