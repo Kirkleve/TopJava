@@ -2,7 +2,7 @@ CREATE DATABASE Jaeger;
 
 \c jaeger;
 
-CREATE TABLE Jaeger(
+CREATE TABLE Jaeger (
 	id SERIAL PRIMARY KEY,
 	modelName TEXT,
 	mark CHAR(8),
@@ -12,4 +12,4 @@ CREATE TABLE Jaeger(
 	origin TEXT,
 	launch DATE,
 	kaijuKill INTEGER
-	);
+);
