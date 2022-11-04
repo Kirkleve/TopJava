@@ -49,7 +49,8 @@ public class BookshelfTest {
         scanner.nextLine();
         System.out.println("Введите название книги которую хотите найти: ");
         String name = scanner.nextLine();
-        System.out.println((bookshelf.find(name) == null ? "Такой книги нету" : bookshelf.find(name)));
+        Book findBook = bookshelf.find(name);
+        System.out.println((findBook == null ? "Такой книги нету" : findBook));
     }
 
     private static void addBook(Bookshelf bookshelf) {
@@ -77,11 +78,11 @@ public class BookshelfTest {
     }
 
     public static void printBooks(Bookshelf bookshelf) {
-        int length = bookshelf.getLength();
-        if (length == 0)
+        int countBooks = bookshelf.getCountBooks();
+        if (countBooks == 0)
             System.out.println("На полках ещё нету книг, но у вас есть возможность их туда положить.");
         else {
-            System.out.println("Шкаф содержит " + length + " книг. Свободно "
+            System.out.println("Шкаф содержит " + countBooks + " книг. Свободно "
                     + bookshelf.findFreeShelf() + " полок." );
             for (Book book: bookshelf.getAll()) {
                 System.out.print(book);

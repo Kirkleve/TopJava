@@ -44,7 +44,7 @@ public class Bookshelf {
         countBooks = 0;
     }
 
-    public int getLength() {
+    public int getCountBooks() {
         return countBooks;
     }
 }
