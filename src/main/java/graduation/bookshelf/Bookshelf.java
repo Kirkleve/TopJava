@@ -40,7 +40,9 @@ public class Bookshelf {
     public boolean delete(String name) {
         for (int i = 0; i < countBooks; i++) {
             if (name.equals(books[i].getTitle())) {
-                System.arraycopy(books, i + 1, books, i, (countBooks--) - i);
+                countBooks--;
+                if (i < countBooks)
+                    System.arraycopy(books, i + 1, books, i, countBooks - i);
                 books[countBooks] = null;
                 return true;
             }
