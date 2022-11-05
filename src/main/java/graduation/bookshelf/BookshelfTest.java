@@ -54,19 +54,21 @@ public class BookshelfTest {
     }
 
     private static void addBook(Bookshelf bookshelf) {
-        scanner.nextLine();
-        System.out.print("Введите автора: ");
-        String author = scanner.nextLine();
-        System.out.print("Введите название книги: ");
-        String name = scanner.nextLine();
-        System.out.print("Введите год книги: ");
-        try {
-            int year = scanner.nextInt();
-            bookshelf.add(new Book(author, name, year));
-            System.out.println("\nКнига на полке!");
-        } catch (InputMismatchException e) {
-            System.out.println("Введите год цифрами! Книгу с не верными данными на полку класть нельзя!");
-        }
+        if (bookshelf.getCountShelf() != bookshelf.getCountBooks()) {
+            scanner.nextLine();
+            System.out.print("Введите автора: ");
+            String author = scanner.nextLine();
+            System.out.print("Введите название книги: ");
+            String name = scanner.nextLine();
+            System.out.print("Введите год книги: ");
+            try {
+                int year = scanner.nextInt();
+                bookshelf.add(new Book(author, name, year));
+                System.out.println("\nКнига на полке!");
+            } catch (InputMismatchException e) {
+                System.out.println("Введите год цифрами! Книгу с не верными данными на полку класть нельзя!");
+            }
+        } else System.out.println("Извините места в шкафу нету!");
     }
 
     private static void deleteBook(Bookshelf bookshelf) {
@@ -88,8 +90,10 @@ public class BookshelfTest {
             for (Book book : bookshelf.getAll()) {
                 System.out.print(book);
             }
-            String line = " ".repeat(bookshelf.getMaxLengthShelf());
-            System.out.printf("|%s|\n", line);
+            if (bookshelf.getCountShelf() != bookshelf.getCountBooks()) {
+                String line = " ".repeat(bookshelf.getMaxLengthShelf());
+                System.out.printf("|%s|\n", line);
+            }
         }
     }
 }

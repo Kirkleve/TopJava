@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Bookshelf {
     private int countBooks;
-    private final Book[] books = new Book[10];
+    private final Book[] books = new Book[2];
     private int maxLengthShelf;
 
     public Book[] getAll() {
@@ -13,6 +13,10 @@ public class Bookshelf {
 
     public int getCountBooks() {
         return countBooks;
+    }
+
+    public int getCountShelf() {
+        return books.length;
     }
 
     public int getMaxLengthShelf() {
