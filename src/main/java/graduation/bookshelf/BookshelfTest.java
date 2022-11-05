@@ -83,11 +83,13 @@ public class BookshelfTest {
             System.out.println("На полках ещё нету книг, но у вас есть возможность их туда положить.");
         else {
             System.out.println("Шкаф содержит " + countBooks + " книг. Свободно "
-                    + bookshelf.findFreeShelf() + " полок." );
-            for (Book book: bookshelf.getAll()) {
+                    + bookshelf.findFreeShelf() + " полок.");
+            bookshelf.findLengthShelf();
+            for (Book book : bookshelf.getAll()) {
                 System.out.print(book);
             }
-            System.out.printf("|%40s|\n", " ");
+            String line = " ".repeat(bookshelf.getMaxLengthShelf());
+            System.out.printf("|%s|\n", line);
         }
     }
 }
