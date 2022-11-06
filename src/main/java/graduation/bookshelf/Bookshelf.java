@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Bookshelf {
     private int countBooks;
-    private final Book[] books = new Book[2];
+    private final Book[] books = new Book[10];
     private int maxLengthShelf;
 
     public Book[] getAll() {
@@ -27,9 +27,9 @@ public class Bookshelf {
         return books.length - countBooks;
     }
 
-    public Book find(String name) {
+    public Book find(String title) {
         for (int i = 0; i < countBooks; i++) {
-            if (name.equals((books[i]).getTitle())) {
+            if (title.equals(books[i].getTitle())) {
                 return books[i];
             }
         }
@@ -39,15 +39,18 @@ public class Bookshelf {
     public void add(Book book) {
         books[countBooks] = book;
         countBooks++;
+        findLengthShelf();
     }
 
-    public boolean delete(String name) {
+    public boolean delete(String title) {
         for (int i = 0; i < countBooks; i++) {
-            if (name.equals(books[i].getTitle())) {
+            if (title.equals(books[i].getTitle())) {
                 countBooks--;
-                if (i < countBooks)
+                if (i < countBooks) {
                     System.arraycopy(books, i + 1, books, i, countBooks - i);
+                }
                 books[countBooks] = null;
+                findLengthShelf();
                 return true;
             }
         }
@@ -60,14 +63,19 @@ public class Bookshelf {
     }
 
     public void findLengthShelf() {
+        maxLengthShelf = sort();
         for (int i = 0; i < countBooks; i++) {
-            if (books[i].getLengthShelf() > maxLengthShelf) {
-                maxLengthShelf = books[i].getLengthShelf();
-            }
+            books[i].setPrintLength(maxLengthShelf);
         }
+    }
+
+    public int sort() {
+        int[] arr = new int[countBooks];
         for (int i = 0; i < countBooks; i++) {
-            books[i].setLengthShelf(maxLengthShelf);
+            arr[i] = books[i].getLengthShelf();
         }
+        Arrays.sort(arr);
+        return arr[arr.length - 1];
     }
 }
 

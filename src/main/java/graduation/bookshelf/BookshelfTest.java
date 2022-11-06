@@ -14,7 +14,7 @@ public class BookshelfTest {
             int menuItem = scanner.nextInt();
             System.out.println();
             switch (menuItem) {
-                case 1 -> printBooks(bookshelf);
+                case 1 -> displayBookshelf(bookshelf);
                 case 2 -> findBook(bookshelf);
                 case 3 -> addBook(bookshelf);
                 case 4 -> deleteBook(bookshelf);
@@ -79,14 +79,13 @@ public class BookshelfTest {
                 : "Книги с таким названием в этом книжном шкафу нету!");
     }
 
-    public static void printBooks(Bookshelf bookshelf) {
+    public static void displayBookshelf(Bookshelf bookshelf) {
         int countBooks = bookshelf.getCountBooks();
         if (countBooks == 0)
             System.out.println("На полках ещё нету книг, но у вас есть возможность их туда положить.");
         else {
             System.out.println("Шкаф содержит " + countBooks + " книг. Свободно "
                     + bookshelf.findFreeShelf() + " полок.");
-            bookshelf.findLengthShelf();
             for (Book book : bookshelf.getAll()) {
                 System.out.print(book);
             }

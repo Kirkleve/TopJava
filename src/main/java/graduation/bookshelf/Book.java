@@ -6,7 +6,8 @@ public class Book {
     private final String author;
     private final String title;
     private final int yearPublication;
-    private int lengthShelf;
+    private final int lengthShelf;
+    private int printLength;
 
     public Book(String author, String title, int yearPublication) {
         this.author = author;
@@ -21,8 +22,8 @@ public class Book {
 
     public String toString() {
         String book = author + ", " + title + ", " + yearPublication;
-        String line = "-".repeat(lengthShelf);
-        String newLine = " ".repeat(lengthShelf - book.length());
+        String line = "-".repeat(printLength);
+        String newLine = " ".repeat(printLength - book.length());
         return """
                 |%s%s|
                 |%s|
@@ -33,7 +34,7 @@ public class Book {
         return lengthShelf;
     }
 
-    public void setLengthShelf(int lengthShelf) {
-        this.lengthShelf = lengthShelf;
+    public void setPrintLength(int printLength) {
+        this.printLength = printLength;
     }
 }
