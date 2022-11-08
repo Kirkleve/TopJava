@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Bookshelf {
     private int countBooks;
-    private final Book[] books = new Book[10];
+    private static final Book[] books = new Book[10];
     private int maxLengthShelf;
 
     public Book[] getAll() {
@@ -39,18 +39,26 @@ public class Bookshelf {
     public void add(Book book) {
         books[countBooks] = book;
         countBooks++;
-        findLengthShelf();
+        if (books[countBooks - 1].getLengthShelf() > maxLengthShelf) {
+            int[] length = findLengthShelf();
+            maxLengthShelf = length[length.length - 1];
+        }
     }
 
     public boolean delete(String title) {
         for (int i = 0; i < countBooks; i++) {
             if (title.equals(books[i].getTitle())) {
+                if (books[i].getLengthShelf() == maxLengthShelf) {
+                    int[] length = findLengthShelf();
+                    if (1 < countBooks) {
+                        maxLengthShelf = length[length.length - 2];
+                    } else maxLengthShelf = length[0];
+                }
                 countBooks--;
                 if (i < countBooks) {
                     System.arraycopy(books, i + 1, books, i, countBooks - i);
                 }
                 books[countBooks] = null;
-                findLengthShelf();
                 return true;
             }
         }
@@ -62,20 +70,14 @@ public class Bookshelf {
         countBooks = 0;
     }
 
-    public void findLengthShelf() {
-        maxLengthShelf = sort();
-        for (int i = 0; i < countBooks; i++) {
-            books[i].setPrintLength(maxLengthShelf);
-        }
-    }
-
-    public int sort() {
+    public int[] findLengthShelf() {
         int[] arr = new int[countBooks];
         for (int i = 0; i < countBooks; i++) {
             arr[i] = books[i].getLengthShelf();
         }
         Arrays.sort(arr);
-        return arr[arr.length - 1];
+        System.out.println("Use");
+        return arr;
     }
 }
 

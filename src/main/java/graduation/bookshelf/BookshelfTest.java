@@ -11,7 +11,7 @@ public class BookshelfTest {
         Bookshelf bookshelf = new Bookshelf();
         while (true) {
             displayMenu();
-            int menuItem = scanner.nextInt();
+            int menuItem = menuItem();
             System.out.println();
             switch (menuItem) {
                 case 1 -> displayBookshelf(bookshelf);
@@ -26,7 +26,8 @@ public class BookshelfTest {
                     System.out.println("До новых встреч.");
                     return;
                 }
-                default -> System.out.println("Неверный номер действия! Смотрите внимательнее!");
+                default -> System.out.println("Неверное действие! Смотрите внимательнее! " +
+                        "Цифры от 1 до 6");
             }
             scanner.nextLine();
             System.out.print("\nДля продолжения работы нажмите Enter");
@@ -45,12 +46,22 @@ public class BookshelfTest {
                 """.indent(2) + "Выберите номер действия: ");
     }
 
+    private static int menuItem() {
+        int item = 0;
+        try {
+            item = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.print("Буквы использовать не надо!");
+        }
+        return item;
+    }
+
     private static void findBook(Bookshelf bookshelf) {
         scanner.nextLine();
         System.out.println("Введите название книги которую хотите найти: ");
         String name = scanner.nextLine();
         Book findBook = bookshelf.find(name);
-        System.out.println((findBook == null ? "Такой книги нету" : findBook));
+        System.out.print((findBook == null ? "Такой книги нету" : printShelf(findBook, bookshelf)));
     }
 
     private static void addBook(Bookshelf bookshelf) {
@@ -87,12 +98,22 @@ public class BookshelfTest {
             System.out.println("Шкаф содержит " + countBooks + " книг. Свободно "
                     + bookshelf.findFreeShelf() + " полок.");
             for (Book book : bookshelf.getAll()) {
-                System.out.print(book);
+                System.out.print(printShelf(book, bookshelf));
             }
             if (bookshelf.getCountShelf() != bookshelf.getCountBooks()) {
                 String line = " ".repeat(bookshelf.getMaxLengthShelf());
                 System.out.printf("|%s|\n", line);
             }
         }
+    }
+
+    public static String printShelf(Book book, Bookshelf bookshelf) {
+        int maxLength = bookshelf.getMaxLengthShelf();
+        String line = "-".repeat(maxLength);
+        String newLine = " ".repeat(maxLength - book.getLengthShelf());
+        return """
+                |%s%s|
+                |%s|
+                """.formatted(book, newLine, line);
     }
 }
