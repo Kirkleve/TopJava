@@ -76,7 +76,6 @@ public class Bookshelf {
             arr[i] = books[i].getLengthShelf();
         }
         Arrays.sort(arr);
-        System.out.println("Use");
         return arr;
     }
 }
